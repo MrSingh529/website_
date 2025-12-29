@@ -1,0 +1,146 @@
+Build a modern, premium, enterprise-grade website for an automation consulting company named AutomataX.
+
+This website must follow 2024–2025 modern web design standards used by leading SaaS and consulting brands.
+
+🔹 Brand Positioning
+AutomataX is an Automation & Workflow Transformation Consulting Partner, not a freelancer or hobby startup.
+The site should feel:
+
+Modern
+
+Premium
+
+Calm
+
+Confident
+
+Trust-driven
+
+Think Stripe × Notion × Accenture-style clarity (modern but professional).
+
+🔹 Design System (VERY IMPORTANT)
+
+Minimalist, modern UI
+
+Large typography (bold headlines, breathable spacing)
+
+Clean grid-based layouts
+
+Soft shadows & subtle depth
+
+Light background with soft gradients (blue → purple)
+
+Rounded cards (12–16px radius)
+
+Modern icon set (line icons, no cartoons)
+
+Smooth micro-interactions (hover, fade, slide-in)
+
+Avoid:
+❌ Loud colors
+❌ Over-animations
+❌ Techy clutter
+❌ Freelancer-style visuals
+
+🔹 Pages to BUILD (not just write)
+
+1. Home Page (Modern SaaS Layout)
+
+Full-width hero section
+
+Strong headline focused on business impact
+
+Supporting subtext in smaller font
+
+Two CTA buttons:
+
+Primary: Book a Free Consultation
+
+Secondary: View Case Studies
+
+Visual elements:
+
+Abstract gradient background
+
+Product-style cards for services
+
+Sections:
+
+Services (card-based, minimal text)
+
+How It Works (horizontal timeline)
+
+Industries Served (logo-style grid)
+
+Case Studies (modern preview cards)
+
+Why AutomataX (trust & outcomes)
+
+Final CTA (clean, bold, centered)
+
+2. Services Page
+
+Modern card layout
+
+Each service includes:
+
+One-line problem
+
+One-line solution
+
+Outcome-focused result
+
+Visual hierarchy > text volume
+
+3. How It Works
+
+Step-based modern layout
+
+Icons + minimal copy
+
+Horizontal or vertical scroll animation
+
+4. Case Studies
+
+Clean modern cards
+
+Expandable sections
+
+Clear business metrics
+
+5. About AutomataX
+
+Founder-led consulting mindset
+
+Emphasis on execution & reliability
+
+Modern typography, no long paragraphs
+
+6. Contact Page
+
+Simple modern form
+
+Large input fields
+
+Minimal copy
+
+Professional CTA
+
+🔹 Modern UX Expectations
+
+Mobile-first responsive design
+
+Fast load performance
+
+Sticky navbar
+
+Smooth scroll
+
+Clean footer with subtle separators
+
+🔹 Overall Goal
+When someone opens the site, it should feel like:
+
+“This is a modern automation consulting firm that understands today’s business and technology.”
+
+Build the website accordingly with modern layouts, visuals, spacing, and interaction patterns.
