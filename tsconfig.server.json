@@ -5,7 +5,8 @@
     "moduleResolution": "node",
     "outDir": "dist/server",
     "allowImportingTsExtensions": false,
-    "noEmit": false
+    "noEmit": false,
+    "emitDeclarationOnly": false
   },
   "include": ["server/**/*", "shared/**/*"],
   "exclude": ["node_modules", "client"]
