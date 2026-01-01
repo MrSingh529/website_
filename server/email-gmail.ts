@@ -1,9 +1,9 @@
 import { google } from 'googleapis';
-import nodemailer from 'nodemailer';
+import type { gmail_v1 } from 'googleapis';
 
 const OAuth2 = google.auth.OAuth2;
 
-async function createTransporter() {
+async function getGmailClient(): Promise<gmail_v1.Gmail> {
   const oauth2Client = new OAuth2(
     process.env.GMAIL_CLIENT_ID,
     process.env.GMAIL_CLIENT_SECRET,
@@ -14,39 +14,50 @@ async function createTransporter() {
     refresh_token: process.env.GMAIL_REFRESH_TOKEN,
   });
 
-  const accessToken = await oauth2Client.getAccessToken();
+  return google.gmail({ version: 'v1', auth: oauth2Client });
+}
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      type: 'OAuth2',
-      user: process.env.GMAIL_USER,
-      clientId: process.env.GMAIL_CLIENT_ID,
-      clientSecret: process.env.GMAIL_CLIENT_SECRET,
-      refreshToken: process.env.GMAIL_REFRESH_TOKEN,
-      accessToken: accessToken.token || '',
-    },
-  });
+function createEmailMessage(to: string, subject: string, html: string, from: string): string {
+  const utf8Subject = `=?utf-8?B?${Buffer.from(subject).toString('base64')}?=`;
+  const messageParts = [
+    `From: ${from}`,
+    `To: ${to}`,
+    'Content-Type: text/html; charset=utf-8',
+    'MIME-Version: 1.0',
+    `Subject: ${utf8Subject}`,
+    '',
+    html,
+  ];
+  const message = messageParts.join('\n');
 
-  return transporter;
+  // Encode the message in base64url format
+  const encodedMessage = Buffer.from(message)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
+
+  return encodedMessage;
 }
 
 export async function sendEmail(to: string, subject: string, html: string) {
   try {
-    const transporter = await createTransporter();
+    const gmail = await getGmailClient();
+    const from = process.env.GMAIL_USER || 'sales@automataxpro.site';
     
-    const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to,
-      subject,
-      html,
-    };
+    const encodedMessage = createEmailMessage(to, subject, html, from);
 
-    const result = await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', result.messageId);
-    return { success: true, messageId: result.messageId };
+    const result = await gmail.users.messages.send({
+      userId: 'me',
+      requestBody: {
+        raw: encodedMessage,
+      },
+    });
+
+    console.log('Email sent successfully via Gmail API:', result.data.id);
+    return { success: true, messageId: result.data.id };
   } catch (error) {
-    console.error('Email sending error:', error);
+    console.error('Gmail API error:', error);
     throw error;
   }
 }
