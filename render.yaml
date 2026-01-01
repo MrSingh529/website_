@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: automataxpro
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: EMAIL_FROM
+        value: sales@automataxpro.site
+      - key: EMAIL_TO
+        value: sales@automataxpro.site
+      - key: PORT
+        value: 10000
