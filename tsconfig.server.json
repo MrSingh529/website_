@@ -3,7 +3,9 @@
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "node",
-    "outDir": "dist/server"
+    "outDir": "dist/server",
+    "allowImportingTsExtensions": false,
+    "noEmit": false
   },
   "include": ["server/**/*", "shared/**/*"],
   "exclude": ["node_modules", "client"]
