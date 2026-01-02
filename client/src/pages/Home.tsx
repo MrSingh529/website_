@@ -59,6 +59,30 @@ const principles = [
   }
 ];
 
+/* --- Representative Work (Anonymized) --- */
+const representativeWork = [
+  {
+    title: "Market Research Report Automation",
+    desc: "Automated end-to-end PowerPoint report generation from structured Excel data, including AI-assisted content, charts, and multi-segment analysis.",
+    outcome: "Reduced report creation from days to under an hour with consistent formatting."
+  },
+  {
+    title: "Enterprise Time-Tracking Compliance Automation",
+    desc: "Built a fully automated compliance system to extract time logs, detect gaps, and send structured escalation emails without manual intervention.",
+    outcome: "Eliminated weekly manual tracking and improved enforcement consistency."
+  },
+  {
+    title: "Sales Operations Intelligence Platform",
+    desc: "Developed a mobile-first PWA to replace notebook-based sales visit reporting with structured data, dashboards, and AI-generated insights.",
+    outcome: "Enabled real-time visibility and reduced administrative overhead."
+  },
+  {
+    title: "GST Reconciliation Automation",
+    desc: "Created a browser-based reconciliation system to match accounting data with statutory returns using deterministic normalization rules.",
+    outcome: "Converted hours of monthly reconciliation into seconds with audit-ready outputs."
+  }
+];
+
 export default function Home() {
   return (
     <div className="w-full overflow-hidden">
@@ -170,6 +194,48 @@ export default function Home() {
                 </Card>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- REPRESENTATIVE WORK ---------------- */}
+      <section className="py-24 bg-white border-t border-slate-100">
+        <div className="container mx-auto px-4">
+          <SectionHeader
+            label="Representative Work"
+            title="Automation Delivered in Real Operating Environments"
+            description="A snapshot of anonymized initiatives delivered across internal enterprise teams and external client engagements."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-16">
+            {representativeWork.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-slate-50 rounded-2xl p-8 border border-slate-100"
+              >
+                <h3 className="text-lg font-bold text-slate-900 mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  {item.desc}
+                </p>
+                <p className="text-sm font-semibold text-slate-500">
+                  Outcome: <span className="text-slate-700">{item.outcome}</span>
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link href="/case-studies">
+              <Button variant="outline" className="rounded-full">
+                View Detailed Case Studies
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
