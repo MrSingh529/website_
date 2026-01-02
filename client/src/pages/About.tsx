@@ -18,7 +18,7 @@ export default function About() {
             className="prose prose-lg prose-slate mx-auto bg-white p-10 rounded-2xl shadow-sm border border-slate-100"
           >
             <p className="lead text-xl text-slate-600">
-              AutomataX was created from hands-on experience inside operating businesses — 
+              AutomataX was created from hands-on experience inside operating businesses —
               not from theory, templates, or generic automation tools.
             </p>
 
@@ -81,6 +81,26 @@ export default function About() {
               Our goal is not to sell automation — it’s to make operations simpler,
               clearer, and easier to scale.
             </p>
+
+            {/* ---------- Founder Note (Anonymous) ---------- */}
+            <div className="mt-14 border-t border-slate-200 pt-8">
+              <h3 className="text-slate-900 font-bold mb-4">
+                A Note from the Builder
+              </h3>
+              <p className="text-slate-600">
+                AutomataX exists because I’ve personally spent years inside teams where capable
+                people were buried under manual processes, broken spreadsheets, and avoidable
+                operational friction.
+              </p>
+              <p className="text-slate-600 mt-4">
+                The goal here is simple: build automation that actually survives real usage —
+                automation that people trust, understand, and don’t fear maintaining.
+              </p>
+              <p className="text-slate-600 mt-4">
+                Every system delivered by AutomataX is something I’d be comfortable owning,
+                supporting, and standing behind long after deployment.
+              </p>
+            </div>
           </motion.div>
 
           <div className="mt-20 text-center">
