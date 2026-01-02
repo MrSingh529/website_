@@ -7,38 +7,93 @@ import { motion } from "framer-motion";
 
 const cases = [
   {
-    client: "FinTech Global",
-    title: "Automating KYC Compliance for 50k+ Users",
-    category: "Financial Services",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-    stats: [
-      { label: "Processing Time", val: "-92%" },
-      { label: "Manual Errors", val: "0%" }
+    client: "Global Market Research & Analytics Firm",
+    title: "Automated Regional Market Research Report Generation",
+    context:
+      "The organization produces large, recurring regional market research reports across multiple geographies and segments. Manual PowerPoint creation was time-consuming, error-prone, and difficult to scale.",
+    problem: [
+      "1–1.5 days spent per report on manual PPT creation",
+      "Inconsistent formatting and missing sections",
+      "Manual chart creation and company profiling",
     ],
-    desc: "We built a custom automated verification pipeline connecting 4 disparate identity providers."
+    solution: [
+      "Built an end-to-end automated PowerPoint generation system",
+      "Integrated AI content generation using multiple LLM providers with fallback logic",
+      "Dynamic chart creation, multi-segment market analysis, and automated company profiling",
+      "Authentication, licensing, logging, and GUI-based configuration",
+    ],
+    outcome: [
+      "Reduced report generation time to ~20–30 minutes per report",
+      "Eliminated manual formatting and data-entry errors",
+      "Enabled recurring, production-grade usage across multiple report types",
+    ],
   },
   {
-    client: "Logistics Pro",
-    title: "Real-time Fleet Coordination System",
-    category: "Supply Chain",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
-    stats: [
-      { label: "Fuel Savings", val: "15%" },
-      { label: "On-time Delivery", val: "+24%" }
+    client: "Large Enterprise Operations Team (India)",
+    title: "Automated Time-Tracking Compliance & Escalation System",
+    context:
+      "Weekly time-tracking compliance was enforced manually using downloaded reports, spreadsheet analysis, and individual emails — consuming hours of administrative effort.",
+    problem: [
+      "2–3 hours of manual effort every week",
+      "Risk of missed employees or incorrect hour calculations",
+      "Inconsistent communication and escalation tracking",
     ],
-    desc: "Integrating IoT sensors with a centralized dashboard for automated route optimization."
+    solution: [
+      "Automated login and data extraction from OpenProject",
+      "Automated identification of employees below compliance thresholds",
+      "Personalized, HTML-formatted email notifications with escalation logic",
+      "GUI-based configuration, logging, and unattended scheduled execution",
+    ],
+    outcome: [
+      "Reduced weekly compliance effort to under 5 minutes",
+      "Removed human error from calculations and notifications",
+      "Standardized, auditable enforcement with management visibility",
+    ],
   },
   {
-    client: "MediCare Plus",
-    title: "Patient Intake & Records Unification",
-    category: "Healthcare",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
-    stats: [
-      { label: "Admin Hours/Wk", val: "-400" },
-      { label: "Compliance", val: "100%" }
+    client: "Industrial Automation Company (Sales Operations)",
+    title: "Sales Visit Documentation & AI Insight Platform",
+    context:
+      "Sales teams relied on notebooks, emails, and manual Excel sheets to track visits, expenses, and follow-ups, resulting in delayed visibility and inconsistent data.",
+    problem: [
+      "High administrative overhead for sales teams",
+      "Delayed manager visibility into pipeline and performance",
+      "No structured insights or action tracking",
     ],
-    desc: "A HIPAA-compliant bridge between legacy EHR systems and modern patient portals."
-  }
+    solution: [
+      "Built a mobile-first Progressive Web App for sales visit logging",
+      "Structured data capture with role-based access for sales and managers",
+      "AI-powered visit analysis and action item generation",
+      "Real-time dashboards, expense tracking, and Excel exports",
+    ],
+    outcome: [
+      "Reduced administrative effort by ~70%",
+      "Enabled real-time managerial visibility into sales activity",
+      "Improved follow-ups, coaching, and decision-making speed",
+    ],
+  },
+  {
+    client: "Accounting Department – Industrial Organization",
+    title: "GST Reconciliation Automation (Zoho Books ↔ GSTR-2B)",
+    context:
+      "Monthly GST reconciliation was performed manually using complex Excel formulas, manual normalization, and ad-hoc judgment calls for mismatches.",
+    problem: [
+      "2–3 hours spent every month on reconciliation",
+      "High risk of formatting and matching errors",
+      "Inconsistent handling of tolerance and mismatches",
+    ],
+    solution: [
+      "Built a zero-install, browser-based PWA for GST reconciliation",
+      "Automated data normalization and configurable tolerance matching",
+      "Generated six standardized reconciliation reports in one workbook",
+      "Client-side processing to ensure data privacy",
+    ],
+    outcome: [
+      "Reduced reconciliation time to under 2 seconds",
+      "Eliminated manual Excel logic and formatting errors",
+      "Improved compliance consistency and audit readiness",
+    ],
+  },
 ];
 
 export default function CaseStudies() {
@@ -46,12 +101,12 @@ export default function CaseStudies() {
     <div className="pt-32 pb-20 min-h-screen bg-white">
       <div className="container mx-auto px-4">
         <SectionHeader
-          label="Success Stories"
-          title="Proven Outcomes"
-          description="See how we've helped industry leaders transform their operations."
+          label="Case Studies"
+          title="Real Automation, Real Operations"
+          description="Representative automation initiatives delivered across internal enterprise teams and external client engagements. Client identities anonymized where required."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <div className="space-y-12 mt-16 max-w-5xl mx-auto">
           {cases.map((study, idx) => (
             <motion.div
               key={idx}
@@ -60,48 +115,48 @@ export default function CaseStudies() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
             >
-              <Card className="h-full border-slate-100 shadow-lg shadow-slate-200/40 overflow-hidden group hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300 flex flex-col">
-                <div className="relative h-48 overflow-hidden">
-                  <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10" />
-                  {/* Stock image for case study with descriptive alt text */}
-                  <img 
-                    src={study.image} 
-                    alt={`${study.client} case study`}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4 z-20">
-                    <Badge variant="secondary" className="bg-white/90 backdrop-blur text-slate-800 font-semibold shadow-sm">
-                      {study.category}
-                    </Badge>
+              <Card className="border border-slate-100 shadow-sm">
+                <CardHeader>
+                  <div className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">
+                    {study.client}
                   </div>
-                </div>
-                
-                <CardHeader className="pt-6 pb-2">
-                  <div className="text-sm font-bold text-primary mb-2 uppercase tracking-wide">{study.client}</div>
-                  <h3 className="text-xl font-bold text-slate-900 leading-tight group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl font-bold text-slate-900">
                     {study.title}
                   </h3>
                 </CardHeader>
-                
-                <CardContent className="py-4 flex-grow">
-                  <p className="text-slate-500 text-sm leading-relaxed mb-6">
-                    {study.desc}
+
+                <CardContent className="space-y-6">
+                  <p className="text-slate-600 leading-relaxed">
+                    {study.context}
                   </p>
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-50">
-                    {study.stats.map((stat, i) => (
-                      <div key={i}>
-                        <div className="text-2xl font-bold text-slate-900">{stat.val}</div>
-                        <div className="text-xs text-slate-400 font-medium uppercase">{stat.label}</div>
-                      </div>
-                    ))}
+
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-2">Challenges</h4>
+                    <ul className="list-disc pl-6 text-slate-600 space-y-1">
+                      {study.problem.map((p, i) => (
+                        <li key={i}>{p}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-2">What We Built</h4>
+                    <ul className="list-disc pl-6 text-slate-600 space-y-1">
+                      {study.solution.map((s, i) => (
+                        <li key={i}>{s}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-2">Operational Impact</h4>
+                    <ul className="list-disc pl-6 text-slate-600 space-y-1">
+                      {study.outcome.map((o, i) => (
+                        <li key={i}>{o}</li>
+                      ))}
+                    </ul>
                   </div>
                 </CardContent>
-
-                <CardFooter className="pb-6 pt-0">
-                  <Button variant="ghost" className="w-full justify-between hover:bg-slate-50 group-hover:text-primary transition-colors">
-                    Read Case Study <ArrowUpRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </CardFooter>
               </Card>
             </motion.div>
           ))}
