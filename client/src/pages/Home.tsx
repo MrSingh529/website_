@@ -7,80 +7,74 @@ import {
   Globe,
   ShieldCheck,
   Settings,
-  LineChart
+  LineChart,
 } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeader } from "@/components/SectionHeader";
 
-/* --- Services Preview --- */
+/* ---------------- CLIENT LOGOS ---------------- */
+const clientLogos = [
+  "/logos/company-1.png",
+  "/logos/company-2.png",
+  "/logos/company-3.png",
+  "/logos/company-4.png",
+  "/logos/company-5.png",
+];
+
+/* ---------------- SERVICES ---------------- */
 const services = [
   {
     icon: <Layers className="w-6 h-6 text-primary" />,
     title: "Workflow Automation",
-    desc: "Design and implementation of custom automation to remove repetitive manual work across teams."
+    desc: "Design and implementation of custom automation to remove repetitive manual work across teams.",
   },
   {
     icon: <BarChart3 className="w-6 h-6 text-primary" />,
     title: "Reporting & Analytics",
-    desc: "Automated data pipelines and dashboards that give teams timely, reliable visibility."
+    desc: "Automated data pipelines and dashboards that give teams timely, reliable visibility.",
   },
   {
     icon: <Globe className="w-6 h-6 text-primary" />,
     title: "System Integration",
-    desc: "Connecting tools, databases, and platforms into a single, dependable workflow."
-  }
+    desc: "Connecting tools, databases, and platforms into a single, dependable workflow.",
+  },
 ];
 
-/* --- Credible Outcomes (No Fake Numbers) --- */
+/* ---------------- OUTCOMES ---------------- */
 const outcomes = [
   { label: "Manual Effort Reduced", value: "Significant" },
   { label: "Process Reliability", value: "Consistent" },
-  { label: "Decision Visibility", value: "Improved" }
+  { label: "Decision Visibility", value: "Improved" },
 ];
 
-/* --- Why AutomataX --- */
-const principles = [
-  {
-    icon: <Settings className="w-6 h-6 text-primary" />,
-    title: "Built for Real Operations",
-    desc: "We automate real business workflows — not demos, not templates."
-  },
-  {
-    icon: <LineChart className="w-6 h-6 text-primary" />,
-    title: "Outcome-Driven",
-    desc: "Every solution is tied to operational clarity, time savings, or risk reduction."
-  },
-  {
-    icon: <ShieldCheck className="w-6 h-6 text-primary" />,
-    title: "Security & Stability First",
-    desc: "Automation that breaks trust is worse than none. Reliability comes first."
-  }
-];
-
-/* --- Representative Work (Anonymized) --- */
+/* ---------------- REPRESENTATIVE WORK ---------------- */
 const representativeWork = [
   {
     title: "Market Research Report Automation",
     desc: "Automated end-to-end PowerPoint report generation from structured Excel data, including AI-assisted content, charts, and multi-segment analysis.",
-    outcome: "Reduced report creation from days to under an hour with consistent formatting."
+    outcome:
+      "Reduced report creation from days to under an hour with consistent formatting.",
   },
   {
     title: "Enterprise Time-Tracking Compliance Automation",
     desc: "Built a fully automated compliance system to extract time logs, detect gaps, and send structured escalation emails without manual intervention.",
-    outcome: "Eliminated weekly manual tracking and improved enforcement consistency."
+    outcome:
+      "Eliminated weekly manual tracking and improved enforcement consistency.",
   },
   {
     title: "Sales Operations Intelligence Platform",
     desc: "Developed a mobile-first PWA to replace notebook-based sales visit reporting with structured data, dashboards, and AI-generated insights.",
-    outcome: "Enabled real-time visibility and reduced administrative overhead."
+    outcome:
+      "Enabled real-time visibility and reduced administrative overhead.",
   },
   {
     title: "GST Reconciliation Automation",
     desc: "Created a browser-based reconciliation system to match accounting data with statutory returns using deterministic normalization rules.",
-    outcome: "Converted hours of monthly reconciliation into seconds with audit-ready outputs."
-  }
+    outcome:
+      "Converted hours of monthly reconciliation into seconds with audit-ready outputs.",
+  },
 ];
 
 export default function Home() {
@@ -109,27 +103,73 @@ export default function Home() {
 
             <h1 className="text-5xl md:text-7xl font-display font-bold text-slate-900 mb-8 leading-[1.1] tracking-tight">
               Automation that removes friction from
-              <span className="gradient-text"> real business operations</span>
+              <span className="gradient-text">
+                {" "}
+                real business operations
+              </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-500 mb-10 max-w-3xl mx-auto leading-relaxed">
-              AutomataX designs and implements custom automation systems that reduce manual effort,
-              improve data reliability, and help teams scale without operational chaos.
+              AutomataX designs and implements custom automation systems that
+              reduce manual effort, improve data reliability, and help teams
+              scale without operational chaos.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button size="lg" className="rounded-full text-lg px-8 py-6 shadow-xl shadow-primary/20">
-                  Start a Conversation <ArrowRight className="ml-2 w-5 h-5" />
+                <Button
+                  size="lg"
+                  className="rounded-full text-lg px-8 py-6 shadow-xl shadow-primary/20"
+                >
+                  Start a Conversation{" "}
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <Link href="/case-studies">
-                <Button variant="outline" size="lg" className="rounded-full text-lg px-8 py-6 bg-white/50">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full text-lg px-8 py-6 bg-white/50"
+                >
                   View Case Studies
                 </Button>
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ---------------- CLIENT LOGO LOOP ---------------- */}
+      <section className="py-16 bg-white border-t border-slate-100 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-sm text-slate-400 font-medium mb-10">
+            Used across internal teams & client organizations
+          </p>
+
+          <div className="relative overflow-hidden">
+            {/* Fade edges */}
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10" />
+
+            <motion.div
+              className="flex items-center gap-16"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                repeat: Infinity,
+                duration: 30,
+                ease: "linear",
+              }}
+            >
+              {[...clientLogos, ...clientLogos].map((logo, idx) => (
+                <img
+                  key={idx}
+                  src={logo}
+                  alt="Client logo"
+                  className="h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity"
+                />
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -187,8 +227,12 @@ export default function Home() {
                     <p className="text-slate-500 leading-relaxed mb-6">
                       {service.desc}
                     </p>
-                    <Link href="/services" className="text-primary font-semibold text-sm inline-flex items-center">
-                      Learn more <ArrowRight className="ml-1 w-4 h-4" />
+                    <Link
+                      href="/services"
+                      className="text-primary font-semibold text-sm inline-flex items-center"
+                    >
+                      Learn more{" "}
+                      <ArrowRight className="ml-1 w-4 h-4" />
                     </Link>
                   </CardContent>
                 </Card>
@@ -224,7 +268,8 @@ export default function Home() {
                   {item.desc}
                 </p>
                 <p className="text-sm font-semibold text-slate-500">
-                  Outcome: <span className="text-slate-700">{item.outcome}</span>
+                  Outcome:{" "}
+                  <span className="text-slate-700">{item.outcome}</span>
                 </p>
               </motion.div>
             ))}
@@ -255,7 +300,7 @@ export default function Home() {
                 "Workflow discovery and process mapping",
                 "Solution design aligned with business priorities",
                 "Incremental build, testing, and validation",
-                "Deployment, documentation, and handover"
+                "Deployment, documentation, and handover",
               ].map((item, i) => (
                 <motion.li
                   key={i}
@@ -290,12 +335,19 @@ export default function Home() {
             Built with Enterprise Expectations
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto mb-10 text-lg">
-            Security, reliability, and auditability are treated as baseline requirements — not add-ons.
+            Security, reliability, and auditability are treated as baseline
+            requirements — not add-ons.
           </p>
           <div className="flex flex-wrap justify-center gap-8 opacity-60">
-            <span className="text-sm font-semibold">Security-first architecture</span>
-            <span className="text-sm font-semibold">Controlled access & logging</span>
-            <span className="text-sm font-semibold">Compliance-aware design</span>
+            <span className="text-sm font-semibold">
+              Security-first architecture
+            </span>
+            <span className="text-sm font-semibold">
+              Controlled access & logging
+            </span>
+            <span className="text-sm font-semibold">
+              Compliance-aware design
+            </span>
           </div>
         </div>
       </section>
