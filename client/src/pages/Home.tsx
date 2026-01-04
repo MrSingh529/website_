@@ -18,9 +18,6 @@ import { SectionHeader } from "@/components/SectionHeader";
 const clientLogos = [
   "/logos/company-1.png",
   "/logos/company-2.png",
-  "/logos/company-3.png",
-  "/logos/company-4.png",
-  "/logos/company-5.png",
 ];
 
 /* ---------------- SERVICES ---------------- */
@@ -354,3 +351,4 @@ export default function Home() {
     </div>
   );
 }
+
