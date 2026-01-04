@@ -7,70 +7,78 @@ import {
   Globe,
   ShieldCheck,
   Settings,
-  LineChart,
+  LineChart
 } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeader } from "@/components/SectionHeader";
 
-/* ---------------- CLIENT LOGOS ---------------- */
-const clientLogos = [
-  "/logos/company-1.png",
-  "/logos/company-2.png",
-];
-
-/* ---------------- SERVICES ---------------- */
+/* --- Services Preview --- */
 const services = [
   {
     icon: <Layers className="w-6 h-6 text-primary" />,
     title: "Workflow Automation",
-    desc: "Design and implementation of custom automation to remove repetitive manual work across teams.",
+    desc: "Design and implementation of custom automation to remove repetitive manual work across teams."
   },
   {
     icon: <BarChart3 className="w-6 h-6 text-primary" />,
     title: "Reporting & Analytics",
-    desc: "Automated data pipelines and dashboards that give teams timely, reliable visibility.",
+    desc: "Automated data pipelines and dashboards that give teams timely, reliable visibility."
   },
   {
     icon: <Globe className="w-6 h-6 text-primary" />,
     title: "System Integration",
-    desc: "Connecting tools, databases, and platforms into a single, dependable workflow.",
-  },
+    desc: "Connecting tools, databases, and platforms into a single, dependable workflow."
+  }
 ];
 
-/* ---------------- OUTCOMES ---------------- */
+/* --- Credible Outcomes --- */
 const outcomes = [
   { label: "Manual Effort Reduced", value: "Significant" },
   { label: "Process Reliability", value: "Consistent" },
-  { label: "Decision Visibility", value: "Improved" },
+  { label: "Decision Visibility", value: "Improved" }
 ];
 
-/* ---------------- REPRESENTATIVE WORK ---------------- */
+/* --- Representative Work (Anonymized) --- */
 const representativeWork = [
   {
     title: "Market Research Report Automation",
     desc: "Automated end-to-end PowerPoint report generation from structured Excel data, including AI-assisted content, charts, and multi-segment analysis.",
-    outcome:
-      "Reduced report creation from days to under an hour with consistent formatting.",
+    outcome: "Reduced report creation from days to under an hour with consistent formatting."
   },
   {
     title: "Enterprise Time-Tracking Compliance Automation",
     desc: "Built a fully automated compliance system to extract time logs, detect gaps, and send structured escalation emails without manual intervention.",
-    outcome:
-      "Eliminated weekly manual tracking and improved enforcement consistency.",
+    outcome: "Eliminated weekly manual tracking and improved enforcement consistency."
   },
   {
     title: "Sales Operations Intelligence Platform",
     desc: "Developed a mobile-first PWA to replace notebook-based sales visit reporting with structured data, dashboards, and AI-generated insights.",
-    outcome:
-      "Enabled real-time visibility and reduced administrative overhead.",
+    outcome: "Enabled real-time visibility and reduced administrative overhead."
   },
   {
     title: "GST Reconciliation Automation",
     desc: "Created a browser-based reconciliation system to match accounting data with statutory returns using deterministic normalization rules.",
-    outcome:
-      "Converted hours of monthly reconciliation into seconds with audit-ready outputs.",
+    outcome: "Converted hours of monthly reconciliation into seconds with audit-ready outputs."
+  }
+];
+
+/* --- Client Testimonials (IMARC) --- */
+const testimonials = [
+  {
+    quote:
+      "The automation completely changed how we generate regional reports. What earlier took more than a day is now predictable, structured, and significantly faster without compromising quality.",
+    name: "Harpreet Singh",
+    role: "Senior Team Lead",
+    org: "IMARC",
+  },
+  {
+    quote:
+      "Consistency was our biggest challenge earlier. With automation in place, formatting, structure, and data accuracy are no longer concerns during report delivery.",
+    name: "Nakul Gupta",
+    role: "Team Member",
+    org: "IMARC",
   },
 ];
 
@@ -100,75 +108,27 @@ export default function Home() {
 
             <h1 className="text-5xl md:text-7xl font-display font-bold text-slate-900 mb-8 leading-[1.1] tracking-tight">
               Automation that removes friction from
-              <span className="gradient-text">
-                {" "}
-                real business operations
-              </span>
+              <span className="gradient-text"> real business operations</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-500 mb-10 max-w-3xl mx-auto leading-relaxed">
-              AutomataX designs and implements custom automation systems that
-              reduce manual effort, improve data reliability, and help teams
-              scale without operational chaos.
+              AutomataX designs and implements custom automation systems that reduce manual effort,
+              improve data reliability, and help teams scale without operational chaos.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button
-                  size="lg"
-                  className="rounded-full text-lg px-8 py-6 shadow-xl shadow-primary/20"
-                >
-                  Start a Conversation{" "}
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                <Button size="lg" className="rounded-full text-lg px-8 py-6 shadow-xl shadow-primary/20">
+                  Start a Conversation <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <Link href="/case-studies">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-full text-lg px-8 py-6 bg-white/50"
-                >
+                <Button variant="outline" size="lg" className="rounded-full text-lg px-8 py-6 bg-white/50">
                   View Case Studies
                 </Button>
               </Link>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* ---------------- CLIENT LOGO LOOP ---------------- */}
-      <section className="py-16 bg-white border-t border-slate-100 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <p className="text-center text-sm text-slate-400 font-medium mb-10">
-            Used across internal teams & client organizations
-          </p>
-      
-          <div className="relative overflow-hidden">
-            {/* Fade edges */}
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10" />
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10" />
-      
-            <motion.div
-              className="flex items-center gap-16"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                repeat: Infinity,
-                duration: 30,
-                ease: "linear",
-              }}
-            >
-              {Array.from({ length: 6 })
-                .flatMap(() => clientLogos)
-                .map((logo, idx) => (
-                  <img
-                    key={idx}
-                    src={logo}
-                    alt="Client logo"
-                    className="h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity"
-                  />
-                ))}
-            </motion.div>
-          </div>
         </div>
       </section>
 
@@ -226,12 +186,8 @@ export default function Home() {
                     <p className="text-slate-500 leading-relaxed mb-6">
                       {service.desc}
                     </p>
-                    <Link
-                      href="/services"
-                      className="text-primary font-semibold text-sm inline-flex items-center"
-                    >
-                      Learn more{" "}
-                      <ArrowRight className="ml-1 w-4 h-4" />
+                    <Link href="/services" className="text-primary font-semibold text-sm inline-flex items-center">
+                      Learn more <ArrowRight className="ml-1 w-4 h-4" />
                     </Link>
                   </CardContent>
                 </Card>
@@ -267,8 +223,39 @@ export default function Home() {
                   {item.desc}
                 </p>
                 <p className="text-sm font-semibold text-slate-500">
-                  Outcome:{" "}
-                  <span className="text-slate-700">{item.outcome}</span>
+                  Outcome: <span className="text-slate-700">{item.outcome}</span>
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- TESTIMONIALS ---------------- */}
+      <section className="py-24 bg-slate-50 border-t border-slate-100">
+        <div className="container mx-auto px-4">
+          <SectionHeader
+            label="Client Feedback"
+            title="What Teams Say After Automation Goes Live"
+            description="Feedback from teams using automation in real production environments."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-16">
+            {testimonials.map((t, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm"
+              >
+                <p className="text-slate-700 leading-relaxed italic mb-6">
+                  “{t.quote}”
+                </p>
+                <p className="font-semibold text-slate-900">{t.name}</p>
+                <p className="text-sm text-slate-500">
+                  {t.role}, {t.org}
                 </p>
               </motion.div>
             ))}
@@ -277,7 +264,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link href="/case-studies">
               <Button variant="outline" className="rounded-full">
-                View Detailed Case Studies
+                Read Full Case Study
               </Button>
             </Link>
           </div>
@@ -299,7 +286,7 @@ export default function Home() {
                 "Workflow discovery and process mapping",
                 "Solution design aligned with business priorities",
                 "Incremental build, testing, and validation",
-                "Deployment, documentation, and handover",
+                "Deployment, documentation, and handover"
               ].map((item, i) => (
                 <motion.li
                   key={i}
@@ -334,24 +321,15 @@ export default function Home() {
             Built with Enterprise Expectations
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto mb-10 text-lg">
-            Security, reliability, and auditability are treated as baseline
-            requirements — not add-ons.
+            Security, reliability, and auditability are treated as baseline requirements — not add-ons.
           </p>
           <div className="flex flex-wrap justify-center gap-8 opacity-60">
-            <span className="text-sm font-semibold">
-              Security-first architecture
-            </span>
-            <span className="text-sm font-semibold">
-              Controlled access & logging
-            </span>
-            <span className="text-sm font-semibold">
-              Compliance-aware design
-            </span>
+            <span className="text-sm font-semibold">Security-first architecture</span>
+            <span className="text-sm font-semibold">Controlled access & logging</span>
+            <span className="text-sm font-semibold">Compliance-aware design</span>
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-
