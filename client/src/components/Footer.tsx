@@ -1,4 +1,4 @@
-import { Zap, Twitter, Linkedin, Github } from "lucide-react";
+import { Zap, Linkedin, Github, Twitter } from "lucide-react";
 import { Link } from "wouter";
 
 export function Footer() {
@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
-          <div className="col-span-1 md:col-span-1">
+          <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-primary/10 p-2 rounded-lg">
                 <Zap className="w-5 h-5 text-primary" />
@@ -16,48 +16,94 @@ export function Footer() {
                 Automata<span className="text-primary">X</span>
               </span>
             </div>
+
             <p className="text-slate-500 text-sm leading-relaxed mb-6">
-              Transforming enterprise workflows with intelligent automation and scalable architecture.
+              A consulting-led automation firm helping teams simplify operations,
+              improve reliability, and scale without unnecessary complexity.
             </p>
+
             <div className="flex gap-4">
-              <a href="#" className="text-slate-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="text-slate-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-              <a href="#" className="text-slate-400 hover:text-primary transition-colors"><Github className="w-5 h-5" /></a>
+              <a
+                href="https://www.linkedin.com/company/automataxpro/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-primary transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-primary transition-colors"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
-          {/* Links */}
+          {/* Company */}
           <div>
             <h4 className="font-semibold text-slate-900 mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-slate-500">
-              <li><Link href="/about"><span className="cursor-pointer hover:text-primary transition-colors">About Us</span></Link></li>
-              <li><Link href="/careers"><span className="cursor-pointer hover:text-primary transition-colors">Careers</span></Link></li>
-              <li><Link href="/contact"><span className="cursor-pointer hover:text-primary transition-colors">Contact</span></Link></li>
+              <li>
+                <Link href="/about">
+                  <span className="cursor-pointer hover:text-primary transition-colors">
+                    About
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/services">
+                  <span className="cursor-pointer hover:text-primary transition-colors">
+                    Services
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/case-studies">
+                  <span className="cursor-pointer hover:text-primary transition-colors">
+                    Case Studies
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact">
+                  <span className="cursor-pointer hover:text-primary transition-colors">
+                    Contact
+                  </span>
+                </Link>
+              </li>
             </ul>
           </div>
 
+          {/* Services */}
           <div>
-            <h4 className="font-semibold text-slate-900 mb-4">Services</h4>
+            <h4 className="font-semibold text-slate-900 mb-4">What We Do</h4>
             <ul className="space-y-2 text-sm text-slate-500">
-              <li><Link href="/services"><span className="cursor-pointer hover:text-primary transition-colors">Workflow Automation</span></Link></li>
-              <li><Link href="/services"><span className="cursor-pointer hover:text-primary transition-colors">Data Integration</span></Link></li>
-              <li><Link href="/services"><span className="cursor-pointer hover:text-primary transition-colors">Consulting</span></Link></li>
+              <li>Workflow Automation</li>
+              <li>Data & Reporting Automation</li>
+              <li>AI-Assisted Systems</li>
+              <li>Compliance & Governance</li>
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Legal & Trust */}
           <div>
-            <h4 className="font-semibold text-slate-900 mb-4">Legal</h4>
+            <h4 className="font-semibold text-slate-900 mb-4">Trust & Legal</h4>
             <ul className="space-y-2 text-sm text-slate-500">
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Data handled confidentially</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
-          <p>&copy; {new Date().getFullYear()} AutomataX Inc. All rights reserved.</p>
-          <p>Designed for Enterprise Excellence.</p>
+          <p>© {new Date().getFullYear()} AutomataX. All rights reserved.</p>
+          <p>Quietly building reliable automation.</p>
         </div>
       </div>
     </footer>
