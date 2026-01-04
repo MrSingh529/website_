@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Zap } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
 
 const links = [
@@ -38,13 +38,12 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
-              <Zap className="w-5 h-5 text-primary" />
-            </div>
-            <span className="font-display font-bold text-xl tracking-tight text-slate-900">
-              Automata<span className="text-primary">X</span>
-            </span>
+          <div className="flex items-center cursor-pointer">
+            <img
+              src="/logo.png"   // change to /logo.png if needed
+              alt="AutomataX"
+              className="h-8 w-auto object-contain"
+            />
           </div>
         </Link>
 
@@ -57,7 +56,7 @@ export function Navbar() {
         <div className="hidden md:block">
           <Link href="/contact">
             <Button className="rounded-full px-6 font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
-              Book Consultation
+              Start a Conversation
             </Button>
           </Link>
         </div>
@@ -74,7 +73,9 @@ export function Navbar() {
               <div className="flex flex-col gap-6 mt-10">
                 <NavLinks mobile />
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
-                  <Button className="w-full rounded-full">Book Consultation</Button>
+                  <Button className="w-full rounded-full">
+                    Start a Conversation
+                  </Button>
                 </Link>
               </div>
             </SheetContent>
