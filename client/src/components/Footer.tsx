@@ -1,4 +1,4 @@
-import { Zap, Linkedin, Github, Twitter } from "lucide-react";
+import { Linkedin, Twitter } from "lucide-react";
 import { Link } from "wouter";
 
 export function Footer() {
@@ -8,14 +8,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="bg-primary/10 p-2 rounded-lg">
-                <Zap className="w-5 h-5 text-primary" />
+            <Link href="/">
+              <div className="mb-4 cursor-pointer">
+                <img
+                  src="/logo.svg" // change to /logo.png if needed
+                  alt="AutomataX"
+                  className="h-8 w-auto object-contain"
+                />
               </div>
-              <span className="font-display font-bold text-xl tracking-tight text-slate-900">
-                Automata<span className="text-primary">X</span>
-              </span>
-            </div>
+            </Link>
 
             <p className="text-slate-500 text-sm leading-relaxed mb-6">
               A consulting-led automation firm helping teams simplify operations,
