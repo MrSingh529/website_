@@ -142,12 +142,12 @@ export default function Home() {
           <p className="text-center text-sm text-slate-400 font-medium mb-10">
             Used across internal teams & client organizations
           </p>
-
+      
           <div className="relative overflow-hidden">
             {/* Fade edges */}
             <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10" />
             <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10" />
-
+      
             <motion.div
               className="flex items-center gap-16"
               animate={{ x: ["0%", "-50%"] }}
@@ -157,14 +157,16 @@ export default function Home() {
                 ease: "linear",
               }}
             >
-              {[...clientLogos, ...clientLogos].map((logo, idx) => (
-                <img
-                  key={idx}
-                  src={logo}
-                  alt="Client logo"
-                  className="h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity"
-                />
-              ))}
+              {Array.from({ length: 6 })
+                .flatMap(() => clientLogos)
+                .map((logo, idx) => (
+                  <img
+                    key={idx}
+                    src={logo}
+                    alt="Client logo"
+                    className="h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity"
+                  />
+                ))}
             </motion.div>
           </div>
         </div>
@@ -351,4 +353,5 @@ export default function Home() {
     </div>
   );
 }
+
 
