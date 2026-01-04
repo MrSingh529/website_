@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import logo from "/public/logo.svg";
 
 const links = [
   { href: "/", label: "Home" },
@@ -36,13 +37,12 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-100">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Logo */}
         <Link href="/">
           <div className="flex items-center cursor-pointer">
             <img
-              src="/logo.svg"
+              src={logo}
               alt="AutomataX"
-              className="h-8 w-auto object-contain"
+              className="h-8 md:h-9 w-auto object-contain"
             />
           </div>
         </Link>
