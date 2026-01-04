@@ -1,8 +1,5 @@
 import { SectionHeader } from "@/components/SectionHeader";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { ArrowUpRight } from "lucide-react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
 const cases = [
@@ -26,6 +23,22 @@ const cases = [
       "Reduced report generation time to ~20–30 minutes per report",
       "Eliminated manual formatting and data-entry errors",
       "Enabled recurring, production-grade usage across multiple report types",
+    ],
+    testimonials: [
+      {
+        quote:
+          "The automation completely changed how we generate regional reports. What earlier took more than a day is now predictable, structured, and significantly faster, without compromising quality.",
+        name: "Harpreet Singh",
+        role: "Senior Team Lead",
+        org: "IMARC",
+      },
+      {
+        quote:
+          "Consistency was our biggest challenge earlier. With automation in place, formatting, structure, and data accuracy are no longer concerns during report delivery.",
+        name: "Nakul Gupta",
+        role: "Team Member",
+        org: "IMARC",
+      },
     ],
   },
   {
@@ -131,7 +144,9 @@ export default function CaseStudies() {
                   </p>
 
                   <div>
-                    <h4 className="font-semibold text-slate-900 mb-2">Challenges</h4>
+                    <h4 className="font-semibold text-slate-900 mb-2">
+                      Challenges
+                    </h4>
                     <ul className="list-disc pl-6 text-slate-600 space-y-1">
                       {study.problem.map((p, i) => (
                         <li key={i}>{p}</li>
@@ -140,7 +155,9 @@ export default function CaseStudies() {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-slate-900 mb-2">What We Built</h4>
+                    <h4 className="font-semibold text-slate-900 mb-2">
+                      What We Built
+                    </h4>
                     <ul className="list-disc pl-6 text-slate-600 space-y-1">
                       {study.solution.map((s, i) => (
                         <li key={i}>{s}</li>
@@ -149,13 +166,42 @@ export default function CaseStudies() {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-slate-900 mb-2">Operational Impact</h4>
+                    <h4 className="font-semibold text-slate-900 mb-2">
+                      Operational Impact
+                    </h4>
                     <ul className="list-disc pl-6 text-slate-600 space-y-1">
                       {study.outcome.map((o, i) => (
                         <li key={i}>{o}</li>
                       ))}
                     </ul>
                   </div>
+
+                  {/* -------- TESTIMONIALS (IMARC ONLY) -------- */}
+                  {study.testimonials && (
+                    <div className="mt-6 pt-6 border-t border-slate-100">
+                      <h4 className="font-semibold text-slate-900 mb-4">
+                        What the Team Said
+                      </h4>
+                      <div className="space-y-4">
+                        {study.testimonials.map((t, i) => (
+                          <div
+                            key={i}
+                            className="bg-slate-50 p-5 rounded-xl border border-slate-100"
+                          >
+                            <p className="text-slate-700 italic mb-3">
+                              “{t.quote}”
+                            </p>
+                            <p className="text-sm font-semibold text-slate-900">
+                              {t.name}
+                            </p>
+                            <p className="text-xs text-slate-500">
+                              {t.role}, {t.org}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>
