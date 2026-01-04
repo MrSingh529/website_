@@ -40,7 +40,7 @@ export function Navbar() {
         <Link href="/">
           <div className="flex items-center cursor-pointer">
             <img
-              src="/logo.png"   // change to /logo.png if needed
+              src="/logo.svg"
               alt="AutomataX"
               className="h-8 w-auto object-contain"
             />
