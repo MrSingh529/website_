@@ -1,5 +1,5 @@
-import { contactSubmissions, type InsertContactSubmission, type ContactSubmission } from "@shared/schema";
-import { db } from "./db";
+import { contactSubmissions, type InsertContactSubmission, type ContactSubmission } from "../shared/schema.ts";
+import { db } from "./db.ts";
 
 export interface IStorage {
   createContactSubmission(contact: InsertContactSubmission): Promise<ContactSubmission>;

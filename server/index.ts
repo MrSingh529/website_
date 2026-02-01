@@ -1,10 +1,24 @@
-import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
-import { serveStatic } from "./static";
+import express from "express";
+import type { Request, Response, NextFunction } from "express";
+import { registerRoutes } from "./routes.ts";
+import { serveStatic } from "./static.ts";
 import { createServer } from "http";
+import cors from "cors";  // Add this import
 
 const app = express();
 const httpServer = createServer(app);
+
+// Add CORS configuration BEFORE other middleware
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://automataxpro.site',  // Your domain
+    'https://*.vercel.app',        // Vercel preview URLs
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 declare module "http" {
   interface IncomingMessage {
@@ -12,13 +26,11 @@ declare module "http" {
   }
 }
 
-app.use(
-  express.json({
-    verify: (req, _res, buf) => {
-      req.rawBody = buf;
-    },
-  }),
-);
+app.use(express.json({
+  verify: (req, _res, buf) => {
+    req.rawBody = buf;
+  },
+}));
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -81,7 +93,7 @@ app.use((req, res, next) => {
   if (process.env.NODE_ENV === "production") {
     serveStatic(app);
   } else {
-    const { setupVite } = await import("./vite");
+    const { setupVite } = await import("./vite.ts");
     await setupVite(httpServer, app);
   }
 
@@ -89,15 +101,10 @@ app.use((req, res, next) => {
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || "5000", 10);
-  httpServer.listen(
-    {
-      port,
-      host: "0.0.0.0",
-      reusePort: true,
-    },
-    () => {
-      log(`serving on port ${port}`);
-    },
-  );
+  const port = process.env.PORT || 3000;
+
+  httpServer.listen(port, () => {
+    log(`serving on port ${port}`);
+    console.log(`Server is running at http://localhost:${port}`);
+  });
 })();

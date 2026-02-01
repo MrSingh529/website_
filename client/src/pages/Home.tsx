@@ -3,6 +3,7 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ContactForm } from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
+import { Layout } from "@/components/Layout";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { 
@@ -18,12 +19,16 @@ import {
   ChevronRight,
   Cpu
 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-background font-body text-foreground overflow-x-hidden">
-      <Navbar />
+  const clientLogos = [
+    { name: 'Wembrace Biopharma', initials: 'WB', imagePath: '/client-logos/client-logo-1.png' },
+    { name: 'imarc', initials: 'IM', imagePath: '/client-logos/client-logo-2.png' },
+  ];
 
+  return (
+    <Layout>
       {/* HERO SECTION */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
@@ -49,30 +54,58 @@ export default function Home() {
               We engineer intelligent workflows and robotic process automation to eliminate manual errors, scale operations, and unlock actionable insights.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ScrollLink to="contact" smooth={true} duration={500} offset={-50}>
+              <a href="/contact">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl shadow-xl shadow-primary/20">
                   Talk to Our Experts <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-              </ScrollLink>
-              <ScrollLink to="services" smooth={true} duration={500} offset={-100}>
+              </a>
+              <a href="/services">
                 <Button variant="outline" size="lg" className="bg-white/50 backdrop-blur border-primary/20 hover:bg-white text-lg px-8 py-6 rounded-xl">
                   Explore Services
                 </Button>
-              </ScrollLink>
+              </a>
             </div>
           </motion.div>
-        </div>
-        
-        {/* Trusted By Strip */}
-        <div className="mt-20 border-t border-border/40 pt-10">
-          <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-6">Trusted by innovative leaders</p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-             {/* Placeholder Logos */}
-             {["Acme Corp", "GlobalBank", "TechFlow", "DataSystems", "FutureScale"].map((name) => (
-               <div key={name} className="text-xl font-display font-bold text-primary/60 flex items-center gap-2">
-                 <div className="w-6 h-6 bg-primary/20 rounded-full"></div> {name}
-               </div>
-             ))}
+          
+          {/* Trusted By Strip - UPDATED WITH LOGO CAROUSEL */}
+          <div className="mt-20 border-t border-border/40 pt-10">
+            <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-8">
+              Trusted by innovative leaders
+            </p>
+            
+            {/* Logo Carousel */}
+            <div className="relative overflow-hidden">
+              {/* Gradient overlays for fade effect */}
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10"></div>
+              
+              {/* Logo Carousel Track */}
+              <div className="flex animate-slide">
+                {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((client, index) => (
+                  <div 
+                    key={index} 
+                    className="flex-shrink-0 mx-8 flex items-center justify-center"
+                  >
+                    <div className="relative w-48 h-16 flex items-center justify-center p-2">
+                      <img 
+                        src={client.imagePath} 
+                        alt={`${client.name} logo`}
+                        className="max-h-12 max-w-full object-contain grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                        loading="lazy"
+                        onError={(e) => {
+                          // Fallback to initials if image fails to load
+                          e.currentTarget.style.display = 'none';
+                          const fallback = document.createElement('div');
+                          fallback.className = `flex items-center justify-center rounded-lg bg-gradient-to-br from-primary/5 to-accent/5 w-32 h-12`;
+                          fallback.innerHTML = `<span class="text-md font-semibold text-primary/60">${client.initials}</span>`;
+                          e.currentTarget.parentNode?.appendChild(fallback);
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -199,36 +232,43 @@ export default function Home() {
       </section>
 
       {/* BENEFITS / WHY US */}
-      <section id="benefits" className="py-20 bg-primary text-white relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 transform translate-x-20"></div>
+      <section id="benefits" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
+      <div className="container-padding">
+        <SectionHeader 
+          title="Why Choose AutomataX" 
+          subtitle="We deliver measurable ROI, not just technology." 
+          alignment="center" 
+        />
         
-        <div className="container-padding relative z-10">
-          <SectionHeader title="Why Choose AutomataX" subtitle="We deliver measurable ROI, not just technology." alignment="left" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-            {[
-              { icon: Clock, title: "Efficiency", desc: "Reduce manual work hours by up to 80% within the first year." },
-              { icon: ShieldCheck, title: "Reliability", desc: "Enterprise-grade security and 99.9% uptime for critical bots." },
-              { icon: TrendingUp, title: "Scalability", desc: "Solutions that grow with you—from 1 bot to 1,000." },
-              { icon: Code2, title: "Expertise", desc: "A dedicated team of certified automation engineers." },
-            ].map((item, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:bg-white/20 transition-colors"
-              >
-                <item.icon className="w-10 h-10 text-accent mb-4" />
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-white/70 leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <Card className="border-2 border-accent/20 bg-white/60 backdrop-blur-sm">
+          <CardContent className="p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { icon: Clock, title: "Efficiency", desc: "Reduce manual work hours by up to 80% within the first year." },
+                { icon: ShieldCheck, title: "Reliability", desc: "Enterprise-grade security and 99.9% uptime for critical bots." },
+                { icon: TrendingUp, title: "Scalability", desc: "Solutions that grow with you—from 1 bot to 1,000." },
+                { icon: Code2, title: "Expertise", desc: "A dedicated team of certified automation engineers." },
+              ].map((item, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mb-4 mx-auto">
+                    <item.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
 
       {/* TECH STACK SECTION */}
       <section id="tech-stack" className="py-20 bg-white">
@@ -261,15 +301,15 @@ export default function Home() {
                 <div className="space-y-6">
                   <div>
                     <div className="text-accent font-semibold mb-1">Office</div>
-                    <p className="text-white/80">123 Innovation Drive<br/>Tech City, TC 94043</p>
+                    <p className="text-white/80">New Delhi<br/>India</p>
                   </div>
                   <div>
                     <div className="text-accent font-semibold mb-1">Email</div>
-                    <p className="text-white/80">solutions@automatax.com</p>
+                    <p className="text-white/80">sales@automataxpro.site</p>
                   </div>
                   <div>
                     <div className="text-accent font-semibold mb-1">Phone</div>
-                    <p className="text-white/80">+1 (555) 123-4567</p>
+                    <p className="text-white/80">+91 92114 57736</p>
                   </div>
                 </div>
               </div>
@@ -300,51 +340,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="bg-primary py-12 text-white/80 border-t border-white/10">
-        <div className="container-padding">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center gap-2 mb-6">
-                <Cpu className="w-6 h-6 text-accent" />
-                <span className="text-2xl font-display font-bold text-white">
-                  Automata<span className="text-accent">X</span>
-                </span>
-              </div>
-              <p className="max-w-sm text-white/60">
-                Empowering enterprises with next-generation automation solutions. Scale faster, reduce costs, and innovate boldly.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold text-white mb-4">Services</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-accent transition-colors">Business Process Automation</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">RPA Solutions</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Workflow Consulting</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Custom Development</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-white mb-4">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-accent transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Terms of Service</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/40">
-            <p>&copy; {new Date().getFullYear()} AutomataX Inc. All rights reserved.</p>
-            <div className="flex gap-4 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Twitter</a>
-              <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-              <a href="#" className="hover:text-white transition-colors">GitHub</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </Layout>
   );
 }

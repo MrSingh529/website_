@@ -27,12 +27,12 @@ export default {
           border: "hsl(var(--popover-border) / <alpha-value>)",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary) / <alpha-value>)",
+          DEFAULT: "hsl(var(--primary) / <alpha-value>)",        /* #1F5EFF */
           foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
           border: "var(--primary-border)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
+          DEFAULT: "hsl(var(--secondary) / <alpha-value>)",      /* Darker Blue */
           foreground: "hsl(var(--secondary-foreground) / <alpha-value>)",
           border: "var(--secondary-border)",
         },
@@ -42,7 +42,7 @@ export default {
           border: "var(--muted-border)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent) / <alpha-value>)",
+          DEFAULT: "hsl(var(--accent) / <alpha-value>)",         /* Lighter Blue */
           foreground: "hsl(var(--accent-foreground) / <alpha-value>)",
           border: "var(--accent-border)",
         },
@@ -51,7 +51,7 @@ export default {
           foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
           border: "var(--destructive-border)",
         },
-        ring: "hsl(var(--ring) / <alpha-value>)",
+        ring: "hsl(var(--ring) / <alpha-value>)",                /* Your Blue */
         chart: {
           "1": "hsl(var(--chart-1) / <alpha-value>)",
           "2": "hsl(var(--chart-2) / <alpha-value>)",
@@ -83,11 +83,11 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        serif: ["var(--font-serif)"],
-        mono: ["var(--font-mono)"],
-        display: ["var(--font-display)"],
-        body: ["var(--font-body)"],
+        sans: ["Inter", "sans-serif"],
+        serif: ["Inter", "sans-serif"],
+        mono: ["Inter", "sans-serif"],
+        display: ["Inter", "sans-serif"],
+        body: ["Inter", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {

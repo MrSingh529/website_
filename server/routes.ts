@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import type { Server } from "http";
-import { storage } from "./storage";
-import { api } from "@shared/routes";
+import { storage } from "./storage.ts";
+import { api } from "../shared/routes.ts";
 import { z } from "zod";
 
 export async function registerRoutes(

@@ -1,5 +1,7 @@
 import { z } from 'zod';
-import { insertContactSchema, contactSubmissions } from './schema';
+import { insertContactSchema, contactSubmissions } from './schema.ts';
+
+const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL || '';
 
 // ============================================
 // SHARED ERROR SCHEMAS
@@ -21,8 +23,8 @@ export const api = {
   contact: {
     submit: {
       method: 'POST' as const,
-      path: '/api/contact',
-      input: insertContactSchema,
+      path: `${API_BASE_URL}/api/contact`,
+      input: insertContactSchema, // Use the updated schema
       responses: {
         201: z.custom<typeof contactSubmissions.$inferSelect>(),
         400: errorSchemas.validation,
@@ -43,7 +45,7 @@ export function buildUrl(path: string, params?: Record<string, string | number>)
       }
     });
   }
-  return url;
+  return `${API_BASE_URL}${url}`;
 }
 
 // ============================================

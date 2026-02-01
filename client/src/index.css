@@ -1,67 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Fonts */
   --font-body: 'Inter', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --font-display: 'Inter', sans-serif;
 
-  /* Color Palette - Enterprise B2B: Deep Navy, Trustworthy Blue, Clean White */
-  /* Background: Very subtle cool gray */
-  --background: 210 40% 98%;
-  /* Foreground: Deep navy almost black */
-  --foreground: 222 47% 11%;
+  /* Updated Color Palette - Premium Blue Theme */
+  /* Background: White */
+  --background: 0 0% 100%;
+  /* Foreground: Your Black (#0B0B0B) */
+  --foreground: 0 0% 4%;  /* #0B0B0B = hsl(0, 0%, 4%) */
 
-  /* Primary: Professional Navy */
-  --primary: 220 35% 18%;
-  --primary-foreground: 210 40% 98%;
+  /* Primary: Lighter Premium Blue */
+  --primary: 217 91% 60%;  /* Lighter, more premium blue - hsl(217, 91%, 60%) */
+  --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Lighter Navy/Slate */
-  --secondary: 215 25% 27%;
-  --secondary-foreground: 210 40% 98%;
+  /* Secondary: Medium Blue */
+  --secondary: 217 86% 50%;  /* hsl(217, 86%, 50%) */
+  --secondary-foreground: 0 0% 100%;
 
-  /* Accent: Vibrant Tech Blue */
-  --accent: 212 96% 55%;
+  /* Accent: Very Light Blue for highlights */
+  --accent: 217 100% 70%;  /* hsl(217, 100%, 70%) */
   --accent-foreground: 0 0% 100%;
 
-  /* Muted: Subtle dividers and backgrounds */
-  --muted: 214 32% 91%;
-  --muted-foreground: 215 16% 47%;
+  /* Muted: Soft blue/gray tones */
+  --muted: 217 20% 96%;
+  --muted-foreground: 217 15% 40%;
 
   /* UI Elements */
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
+  --card-foreground: 0 0% 4%;  /* Your Black */
   --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 212 96% 55%;
+  --popover-foreground: 0 0% 4%;  /* Your Black */
+  --border: 217 20% 90%;
+  --input: 217 20% 96%;
+  --ring: 217 91% 60%;  /* Premium blue focus rings */
   --radius: 0.5rem;
 
-  /* Functional */
+  /* Functional - keeping standard red */
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 100%;
 }
 
 .dark {
-  /* Dark mode mappings for potential future use */
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
-  --primary: 212 96% 55%;
-  --primary-foreground: 222 47% 11%;
-  --secondary: 217 19% 27%;
-  --secondary-foreground: 210 40% 98%;
-  --accent: 212 96% 55%;
-  --accent-foreground: 222 47% 11%;
-  --muted: 217 19% 27%;
-  --muted-foreground: 215 20% 65%;
-  --card: 222 47% 13%;
-  --card-foreground: 210 40% 98%;
-  --border: 217 19% 27%;
-  --input: 217 19% 27%;
+  /* Dark mode with premium blue/black scheme */
+  --background: 0 0% 4%;  /* Your Black as dark mode background */
+  --foreground: 0 0% 100%;
+  --primary: 217 100% 70%;  /* Brighter premium blue in dark mode */
+  --primary-foreground: 0 0% 4%;  /* Your Black */
+  --secondary: 217 91% 60%;  /* Original premium blue */
+  --secondary-foreground: 0 0% 100%;
+  --accent: 217 100% 80%;  /* Even brighter for accents */
+  --accent-foreground: 0 0% 4%;  /* Your Black */
+  --muted: 217 30% 15%;
+  --muted-foreground: 217 20% 70%;
+  --card: 217 30% 10%;
+  --card-foreground: 0 0% 100%;
+  --border: 217 30% 20%;
+  --input: 217 30% 20%;
 }
 
 @layer base {
@@ -89,5 +88,47 @@
 
   .container-padding {
     @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slide-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide {
+  animation: slide 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-slide-reverse {
+  animation: slide-reverse 35s linear infinite;
+  will-change: transform;
+}
+
+/* Pause animation on hover */
+.animate-slide:hover,
+.animate-slide-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* Ensure logos are responsive */
+@media (max-width: 768px) {
+  .animate-slide,
+  .animate-slide-reverse {
+    animation-duration: 25s;
   }
 }

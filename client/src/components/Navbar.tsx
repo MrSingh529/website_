@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-scroll";
-import { Menu, X, Cpu } from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { Link as ScrollLink } from "react-scroll";
+import { Menu } from "lucide-react"; // Removed Cpu import
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,51 +17,143 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Services", to: "services" },
-    { name: "Use Cases", to: "use-cases" },
-    { name: "Technology", to: "tech-stack" },
-    { name: "Why Us", to: "benefits" },
+  const navLinks: {
+    name: string;
+    to?: string;
+    href?: string;
+    isAnchor?: boolean;
+  }[] = [
+    { name: "Services", href: "/services" },
+    { name: "Use Cases", href: "/use-cases" },
+    { name: "Case Studies", href: "/case-studies" },
+    { name: "Benefits & ROI", href: "/benefits-roi" },
+    { name: "Technology", href: "/technology" },
+    { name: "Why Us", href: "/why-us" },
   ];
+
+  const renderLink = (link: typeof navLinks[0]) => {
+    if (location === "/" && link.isAnchor && link.to) {
+      return (
+        <ScrollLink
+          key={link.name}
+          to={link.to}
+          smooth={true}
+          duration={500}
+          offset={-100}
+          className="text-sm font-medium text-muted-foreground hover:text-accent cursor-pointer transition-colors"
+        >
+          {link.name}
+        </ScrollLink>
+      );
+    }
+    
+    if (link.isAnchor && link.to) {
+      return (
+        <a
+          key={link.name}
+          href={`/#${link.to}`}
+          className="text-sm font-medium text-muted-foreground hover:text-accent cursor-pointer transition-colors"
+        >
+          {link.name}
+        </a>
+      );
+    }
+    
+    if (link.href) {
+      return (
+        <a
+          key={link.name}
+          href={link.href}
+          className="text-sm font-medium text-muted-foreground hover:text-accent cursor-pointer transition-colors"
+        >
+          {link.name}
+        </a>
+      );
+    }
+    
+    return null;
+  };
+
+  const renderMobileLink = (link: typeof navLinks[0]) => {
+    if (location === "/" && link.isAnchor && link.to) {
+      return (
+        <ScrollLink
+          key={link.name}
+          to={link.to}
+          smooth={true}
+          duration={500}
+          offset={-100}
+          className="text-lg font-medium text-foreground hover:text-accent cursor-pointer"
+        >
+          {link.name}
+        </ScrollLink>
+      );
+    }
+    
+    if (link.isAnchor && link.to) {
+      return (
+        <a
+          key={link.name}
+          href={`/#${link.to}`}
+          className="text-lg font-medium text-foreground hover:text-accent cursor-pointer"
+        >
+          {link.name}
+        </a>
+      );
+    }
+    
+    if (link.href) {
+      return (
+        <a
+          key={link.name}
+          href={link.href}
+          className="text-lg font-medium text-foreground hover:text-accent cursor-pointer"
+        >
+          {link.name}
+        </a>
+      );
+    }
+    
+    return null;
+  };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md py-4"
-          : "bg-transparent py-6"
+      className={`fixed top-0 left-0 w-full z-50 transition-all ${
+        isScrolled ? "bg-background/80 backdrop-blur shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="container-padding flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="bg-primary text-white p-1.5 rounded-lg">
-            <Cpu className="w-6 h-6" />
-          </div>
-          <span className={`text-2xl font-display font-bold ${isScrolled ? "text-primary" : "text-primary"}`}>
-            Automata<span className="text-accent">X</span>
-          </span>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo - Updated to use your logo.png */}
+        <a href="/" className="flex items-center gap-2 cursor-pointer">
+          <img 
+            src="/logo.png" 
+            alt="AutomataX Logo" 
+            className="h-10 w-auto transition-all duration-300 hover:opacity-90"
+            onError={(e) => {
+              // Fallback in case logo doesn't load
+              e.currentTarget.style.display = 'none';
+              const fallback = document.createElement('div');
+              fallback.className = 'flex items-center gap-2';
+              fallback.innerHTML = `
+                <div class="bg-primary text-white p-1.5 rounded-lg">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                </div>
+                <span class="text-xl font-bold text-primary">Automata<span class="text-accent">X</span></span>
+              `;
+              e.currentTarget.parentNode?.insertBefore(fallback, e.currentTarget);
+            }}
+          />
+        </a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.to}
-              smooth={true}
-              duration={500}
-              offset={-100}
-              className="text-sm font-medium text-muted-foreground hover:text-accent cursor-pointer transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link to="contact" smooth={true} duration={500} offset={-50}>
+          {navLinks.map(renderLink)}
+          <a href="/contact">
             <Button className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg shadow-primary/20">
               Get Started
             </Button>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Nav */}
@@ -70,23 +164,13 @@ export function Navbar() {
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>
+
             <SheetContent>
               <div className="flex flex-col gap-6 mt-10">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.to}
-                    smooth={true}
-                    duration={500}
-                    offset={-100}
-                    className="text-lg font-medium text-foreground hover:text-accent cursor-pointer"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-                <Link to="contact" smooth={true} duration={500}>
+                {navLinks.map(renderMobileLink)}
+                <a href="/contact">
                   <Button className="w-full bg-primary hover:bg-primary/90">Get Started</Button>
-                </Link>
+                </a>
               </div>
             </SheetContent>
           </Sheet>

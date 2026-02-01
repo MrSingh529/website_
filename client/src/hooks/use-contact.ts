@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, type ContactInput } from "@shared/routes";
+import { api, type ContactInput, buildUrl } from "@shared/routes";
 import { useToast } from "@/hooks/use-toast";
 
 export function useCreateContact() {
@@ -8,11 +8,12 @@ export function useCreateContact() {
 
   return useMutation({
     mutationFn: async (data: ContactInput) => {
-      // Client-side validation using the same schema is handled by hook-form
-      // but we do runtime validation here too
       const validated = api.contact.submit.input.parse(data);
       
-      const res = await fetch(api.contact.submit.path, {
+      // Use buildUrl to get the full API URL
+      const apiUrl = buildUrl(api.contact.submit.path);
+      
+      const res = await fetch(apiUrl, {
         method: api.contact.submit.method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(validated),
