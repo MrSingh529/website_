@@ -3,28 +3,41 @@ import type { Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes.ts";
 import { serveStatic } from "./static.ts";
 import { createServer } from "http";
-import cors from "cors";  // Add this import
+import cors from "cors";
 
 const app = express();
 const httpServer = createServer(app);
 
-// Add CORS configuration BEFORE other middleware
-app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://automataxpro.site',  // Your domain
-    'https://*.vercel.app',        // Vercel preview URLs
-  ],
+const corsOptions = {
+  origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://automataxpro.site',
+      'https://*.vercel.app',
+      /\.vercel\.app$/  // All Vercel preview deployments
+    ];
+    
+    if (allowedOrigins.some(allowed => {
+      if (typeof allowed === 'string') return origin === allowed;
+      if (allowed instanceof RegExp) return allowed.test(origin);
+      return false;
+    })) {
+      return callback(null, true);
+    }
+    
+    callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+};
 
-declare module "http" {
-  interface IncomingMessage {
-    rawBody: unknown;
-  }
-}
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 app.use(express.json({
   verify: (req, _res, buf) => {
