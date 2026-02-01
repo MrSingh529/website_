@@ -15,20 +15,6 @@ export const errorSchemas = {
 };
 
 // ============================================
-// API BASE URL - Works in both client and server
-// ============================================
-let API_BASE_URL = '';
-
-// Check environment safely
-if (typeof process !== 'undefined' && process.env?.VITE_API_BASE_URL) {
-  // Node.js/server environment
-  API_BASE_URL = process.env.VITE_API_BASE_URL;
-} else if (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE_URL) {
-  // Vite/client environment
-  API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-}
-
-// ============================================
 // API CONTRACT
 // ============================================
 export const api = {
@@ -58,12 +44,9 @@ export function buildUrl(path: string, params?: Record<string, string | number>)
     });
   }
   
-  // Determine if we should use API_BASE_URL
-  const shouldUseBaseUrl = API_BASE_URL && 
-    !API_BASE_URL.includes('localhost') && 
-    !API_BASE_URL.includes('127.0.0.1');
-  
-  return shouldUseBaseUrl ? `${API_BASE_URL}${url}` : url;
+  // For client-side, we'll pass the full URL from the client
+  // For server-side, it's relative
+  return url;
 }
 
 // ============================================

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, type ContactInput, buildUrl } from "@shared/routes";
+import { api, type ContactInput } from "@shared/routes";
 import { useToast } from "@/hooks/use-toast";
 
 export function useCreateContact() {
@@ -10,8 +10,9 @@ export function useCreateContact() {
     mutationFn: async (data: ContactInput) => {
       const validated = api.contact.submit.input.parse(data);
       
-      // Use buildUrl to get the full API URL
-      const apiUrl = buildUrl(api.contact.submit.path);
+      // Determine API URL based on environment
+      const baseUrl = import.meta.env?.VITE_API_BASE_URL || '';
+      const apiUrl = `${baseUrl}${api.contact.submit.path}`;
       
       const res = await fetch(apiUrl, {
         method: api.contact.submit.method,
