@@ -3,7 +3,7 @@ services:
     name: automatax-backend
     env: node
     region: oregon
-    buildCommand: npm run build:render
+    buildCommand: npm run build:server
     startCommand: npm start
     envVars:
       - key: NODE_ENV

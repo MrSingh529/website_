@@ -115,9 +115,16 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === 'production';
 
-  httpServer.listen(port, () => {
-    log(`serving on port ${port}`);
-    console.log(`Server is running at http://localhost:${port}`);
-  });
+if (isProduction) {
+  // Production specific configuration if needed
+  console.log('Starting server in production mode');
+}
+
+httpServer.listen(port, () => {
+  log(`serving on port ${port}`);
+  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Environment: ${isProduction ? 'production' : 'development'}`);
+});
 })();
