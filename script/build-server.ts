@@ -2,7 +2,7 @@ import { build } from "esbuild";
 import { rm } from "fs/promises";
 
 async function buildServer() {
-  await rm("dist", { recursive: true, force: true });
+  await rm("dist/index.cjs", { force: true });
 
   console.log("building server...");
   
