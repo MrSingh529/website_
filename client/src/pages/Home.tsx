@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Navbar } from "@/components/Navbar";
 import { ServiceCard } from "@/components/ServiceCard";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -22,6 +23,9 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "AutomataX | Your Future, Automated.";
+  }, []);
   const clientLogos = [
     { name: 'Wembrace Biopharma', initials: 'WB', imagePath: '/client-logos/client-logo-1.png' },
     { name: 'imarc', initials: 'IM', imagePath: '/client-logos/client-logo-2.png' },

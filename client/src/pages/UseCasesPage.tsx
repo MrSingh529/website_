@@ -5,8 +5,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowRight, Building2, Factory, ShoppingBag, Heart, Users, DollarSign, Truck, Headphones, LineChart, Shield, Zap, CheckCircle2 } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 export default function UseCasesPage() {
+  useEffect(() => {
+    document.title = "Use Cases | AutomataX";
+  }, []);
   const industries = [
     {
       name: 'Finance',

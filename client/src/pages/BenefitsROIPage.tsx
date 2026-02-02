@@ -14,8 +14,12 @@ import {
 } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { Link as ScrollLink } from 'react-scroll';
+import { useEffect } from 'react';
 
 export default function BenefitsROIPage() {
+  useEffect(() => {
+    document.title = "Benefits & ROI | AutomataX";
+  }, []);
   const benefits = [
     {
       icon: TrendingUp,

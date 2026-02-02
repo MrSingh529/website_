@@ -4,8 +4,12 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Quote, TrendingUp, Clock, DollarSign } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { Link as ScrollLink } from 'react-scroll';
+import { useEffect } from 'react';
 
-export default function CaseStudiesPage() {
+export default function ClientCaseStudiesPage() {
+  useEffect(() => {
+    document.title = "Case Studies | AutomataX";
+  }, []);
   const caseStudies = [
     {
       company: 'IMARC Group',

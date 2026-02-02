@@ -17,8 +17,12 @@ import { Mail, Phone, MapPin, Send, CheckCircle2, Clock, Shield } from 'lucide-r
 import { useCreateContact } from '@/hooks/use-contact';
 import { Layout } from '@/components/Layout';
 import { Loader2 } from 'lucide-react';
+import { useEffect } from 'react';
 
 export default function ContactPage() {
+  useEffect(() => {
+    document.title = "Contact Us | AutomataX";
+  }, []);
   const { mutate, isPending, isSuccess } = useCreateContact();
   const [inquiryType, setInquiryType] = useState<'expert' | 'proposal'>('expert');
 

@@ -5,8 +5,12 @@ import { CheckCircle2, ArrowRight, Workflow, Bot, Code2, Lightbulb, Database, Tr
 import { Layout } from '@/components/Layout';
 import { Link as ScrollLink } from 'react-scroll';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 export default function ServicesPage() {
+  useEffect(() => {
+    document.title = "Our Services | AutomataX";
+  }, []);
   const services = [
     {
       title: 'Business Process Automation',

@@ -27,8 +27,12 @@ import {
 } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 export default function WhyUsPage() {
+  useEffect(() => {
+    document.title = "Why Choose Us | AutomataX";
+  }, []);
   const differentiators = [
     {
       icon: Heart,

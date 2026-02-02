@@ -5,8 +5,12 @@ import { MessageSquare, Users, Headphones } from 'lucide-react';
 import { CheckCircle2, Cpu, Cloud, Zap, Lock, GitBranch, Database, ArrowRight, Server, Shield, Code, BarChart, Link, Grid } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 export default function TechnologyStackPage() {
+  useEffect(() => {
+    document.title = "Technology Stack | AutomataX";
+  }, []);
   const technologies = [
     {
       category: 'AI & Machine Learning',
