@@ -194,19 +194,23 @@ export default function WhyUsPage() {
               
               <div className="space-y-6 text-lg text-muted-foreground">
                 <p>
-                  Hi, I'm Mr. Singh - founder of AutomataX. I didn't set out to start an automation company. 
-                  My first tech role was actually as an EA to a process improvement consultant.
+                  Hi, I'm Mr. Singh — founder of AutomataX. I didn’t start out planning to build an automation company.
+                  I started by working closely with leadership teams on process improvement and day-to-day operations.
                 </p>
+
                 <p>
-                  Pretty quickly, I started automating repetitive, annoying tasks and built a few internal 
-                  apps to make approvals and daily work easier. Soon, I became the "go-to" person for fixing 
-                  workflows and solving messy operational problems.
+                  Along the way, I kept seeing the same problems everywhere — repetitive tasks, manual approvals,
+                  broken workflows, and teams spending hours on work that could be done in minutes.
+                  So I began building internal automations and lightweight tools to simplify how work actually gets done.
                 </p>
+
                 <p>
-                  That's why I started AutomataX. I believe automation shouldn't just be for big tech companies. 
-                  Every business deserves smart, secure, human-first solutions. And you should always know 
-                  the real people building your tools.
+                  Over time, I became the person teams turned to when operations felt messy or inefficient.
+                  That hands-on experience is what led to AutomataX.
+                  I believe automation shouldn’t be complex or reserved for big tech companies —
+                  every business deserves smart, secure, human-first systems that simply work.
                 </p>
+
                 <div className="pt-6 border-t border-border/50">
                   <p className="text-foreground/70 italic">
                     "If you're curious what automation could do for your team, let's have a real conversation—no sales pitch, just ideas."
@@ -455,7 +459,7 @@ export default function WhyUsPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Final CTA */}Hi, I'm Mr. Singh - founder of Automata
       <section className="py-20 bg-white">
         <div className="container-padding">
           <div className="max-w-4xl mx-auto text-center">
