@@ -10,7 +10,6 @@ const httpServer = createServer(app);
 
 const corsOptions = {
   origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
-    // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
     const allowedOrigins = [
@@ -18,7 +17,7 @@ const corsOptions = {
       'http://localhost:3000',
       'https://automataxpro.site',
       'https://*.vercel.app',
-      /\.vercel\.app$/  // All Vercel preview deployments
+      /\.vercel\.app$/
     ];
     
     if (allowedOrigins.some(allowed => {
@@ -37,7 +36,12 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS') {
+    return cors(corsOptions)(req, res, next);
+  }
+  next();
+});
 
 app.use(express.json({
   verify: (req, _res, buf) => {
@@ -100,9 +104,6 @@ app.use((req, res, next) => {
     return res.status(status).json({ message });
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
   if (process.env.NODE_ENV === "production") {
     serveStatic(app);
   } else {
@@ -110,21 +111,17 @@ app.use((req, res, next) => {
     await setupVite(httpServer, app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
   const port = process.env.PORT || 3000;
-const isProduction = process.env.NODE_ENV === 'production';
+  const isProduction = process.env.NODE_ENV === 'production';
 
-if (isProduction) {
-  // Production specific configuration if needed
-  console.log('Starting server in production mode');
-}
+  if (isProduction) {
+    // Production specific configuration if needed
+    console.log('Starting server in production mode');
+  }
 
-httpServer.listen(port, () => {
-  log(`serving on port ${port}`);
-  console.log(`Server is running at http://localhost:${port}`);
-  console.log(`Environment: ${isProduction ? 'production' : 'development'}`);
-});
+  httpServer.listen(port, () => {
+    log(`serving on port ${port}`);
+    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Environment: ${isProduction ? 'production' : 'development'}`);
+  });
 })();
