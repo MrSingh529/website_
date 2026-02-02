@@ -12,6 +12,6 @@ services:
         value: 3000
       - key: DATABASE_URL
         sync: false
-    healthCheckPath: /api/contact
+    healthCheckPath: /
     autoDeploy: true
     plan: free
