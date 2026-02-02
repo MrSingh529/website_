@@ -459,7 +459,7 @@ export default function WhyUsPage() {
         </div>
       </section>
 
-      {/* Final CTA */}Hi, I'm Mr. Singh - founder of Automata
+      {/* Final CTA */}
       <section className="py-20 bg-white">
         <div className="container-padding">
           <div className="max-w-4xl mx-auto text-center">
