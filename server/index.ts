@@ -119,9 +119,9 @@ app.use((req, res, next) => {
     console.log('Starting server in production mode');
   }
 
-  httpServer.listen(port, () => {
+  httpServer.listen(port, '0.0.0.0', () => {
     log(`serving on port ${port}`);
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running on port ${port}`);
     console.log(`Environment: ${isProduction ? 'production' : 'development'}`);
   });
 })();

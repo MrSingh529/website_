@@ -3,15 +3,12 @@ services:
     name: automatax-backend
     env: node
     region: oregon
-    buildCommand: npm run build:server
+    buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 3000
       - key: DATABASE_URL
         sync: false
-    healthCheckPath: /
     autoDeploy: true
     plan: free
