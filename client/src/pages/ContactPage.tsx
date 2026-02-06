@@ -18,11 +18,15 @@ import { useCreateContact } from '@/hooks/use-contact';
 import { Layout } from '@/components/Layout';
 import { Loader2 } from 'lucide-react';
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import SpotlightCard from '@/components/SpotlightCard';
+import TextType from '@/components/TextType';
 
 export default function ContactPage() {
   useEffect(() => {
     document.title = "Contact Us | AutomataX";
   }, []);
+  
   const { mutate, isPending, isSuccess } = useCreateContact();
   const [inquiryType, setInquiryType] = useState<'expert' | 'proposal'>('expert');
 
@@ -91,7 +95,6 @@ export default function ContactPage() {
       return;
     }
 
-    // Convert arrays to comma-separated strings for database
     const submissionData = {
       name: formData.name,
       email: formData.email,
@@ -106,7 +109,6 @@ export default function ContactPage() {
 
     mutate(submissionData, {
       onSuccess: () => {
-        // Reset form on success
         setFormData({
           name: '',
           email: '',
@@ -131,11 +133,16 @@ export default function ContactPage() {
           </div>
 
           <div className="container-padding relative z-10 text-center">
-            <div className="flex justify-center mb-6">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5, type: "spring" }}
+              className="flex justify-center mb-6"
+            >
               <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center">
                 <CheckCircle2 className="w-10 h-10 text-green-600" />
               </div>
-            </div>
+            </motion.div>
             <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20">
               Thank You!
             </Badge>
@@ -159,7 +166,7 @@ export default function ContactPage() {
 
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Hero Section - With Typing Effect */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -169,7 +176,24 @@ export default function ContactPage() {
         <div className="container-padding relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 text-primary">
             Let's Transform Your <br />
-            <span className="text-gradient">Business Together</span>
+            <TextType
+              text={[
+                "Business Together",
+                "Operations Today",
+                "Future Now",
+                "Workflows Fast"
+              ]}
+              as="span"
+              className="text-gradient inline-block min-h-[1.2em]"
+              typingSpeed={85}
+              deletingSpeed={52}
+              pauseDuration={2200}
+              loop={true}
+              showCursor={true}
+              cursorCharacter="▎"
+              cursorClassName="text-accent"
+              startOnVisible={true}
+            />
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
             Connect with our automation experts to discuss your needs and explore how AutomataX
@@ -178,272 +202,306 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form */}
+      {/* Contact Form - With Spotlight */}
       <section className="py-20 bg-white">
         <div className="container-padding">
           <div className="grid gap-12 lg:grid-cols-3">
-            <div className="lg:col-span-2">
-              <Card className="border-2 border-border/50">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-primary">Contact Information</CardTitle>
-                  <CardDescription className="text-foreground/70">
-                    Fill out the form below and we'll get back to you within 24 hours
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-foreground">
-                        Full Name <span className="text-destructive">*</span>
-                      </Label>
-                      <Input
-                        id="name"
-                        placeholder="Jasson Smith"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="border-border"
-                        required
+            <motion.div 
+              className="lg:col-span-2"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.08)">
+                <Card className="border-2 border-border/50">
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-primary">
+                      <TextType
+                        text={["Contact Information", "Get In Touch", "Start Conversation"]}
+                        as="span"
+                        className="inline-block min-w-[320px]"
+                        typingSpeed={90}
+                        deletingSpeed={55}
+                        pauseDuration={2400}
+                        loop={true}
+                        showCursor={true}
+                        cursorCharacter="▎"
+                        cursorClassName="text-accent"
+                        startOnVisible={true}
                       />
+                    </CardTitle>
+                    <CardDescription className="text-foreground/70">
+                      Fill out the form below and we'll get back to you within 24 hours
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div className="grid gap-6 md:grid-cols-2">
+                      <div className="space-y-2">
+                        <Label htmlFor="name" className="text-foreground">
+                          Full Name <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="name"
+                          placeholder="Jasson Smith"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          className="border-border"
+                          required
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-foreground">
+                          Email Address <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="jasson@company.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="border-border"
+                          required
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="company" className="text-foreground">
+                          Company Name
+                        </Label>
+                        <Input
+                          id="company"
+                          placeholder="Acme Corporation"
+                          value={formData.company}
+                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                          className="border-border"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-foreground">Phone Number</Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          placeholder="+1 (555) 123-4567"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className="border-border"
+                        />
+                      </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-foreground">
-                        Email Address <span className="text-destructive">*</span>
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="jasson@company.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="border-border"
-                        required
-                      />
+                      <Label htmlFor="industry" className="text-foreground">Industry</Label>
+                      <Select value={formData.industry} onValueChange={(value) => setFormData({ ...formData, industry: value })}>
+                        <SelectTrigger id="industry" className="border-border">
+                          <SelectValue placeholder="Select your industry" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {industries.map((industry) => (
+                            <SelectItem key={industry} value={industry}>
+                              {industry}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="company" className="text-foreground">
-                        Company Name
-                      </Label>
-                      <Input
-                        id="company"
-                        placeholder="Acme Corporation"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="border-border"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-foreground">Phone Number</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        placeholder="+1 (555) 123-4567"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="border-border"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="industry" className="text-foreground">Industry</Label>
-                    <Select value={formData.industry} onValueChange={(value) => setFormData({ ...formData, industry: value })}>
-                      <SelectTrigger id="industry" className="border-border">
-                        <SelectValue placeholder="Select your industry" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {industries.map((industry) => (
-                          <SelectItem key={industry} value={industry}>
-                            {industry}
-                          </SelectItem>
+                    <div className="space-y-3">
+                      <Label className="text-foreground">Business Needs (select all that apply)</Label>
+                      <div className="grid gap-3 md:grid-cols-2">
+                        {businessNeedsOptions.map((need) => (
+                          <div key={need} className="flex items-center space-x-2">
+                            <Checkbox
+                              id={`need-${need}`}
+                              checked={formData.businessNeeds.includes(need)}
+                              onCheckedChange={() => handleBusinessNeedToggle(need)}
+                              className="border-border data-[state=checked]:bg-accent"
+                            />
+                            <Label htmlFor={`need-${need}`} className="cursor-pointer text-sm font-normal text-foreground">
+                              {need}
+                            </Label>
+                          </div>
                         ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-3">
-                    <Label className="text-foreground">Business Needs (select all that apply)</Label>
-                    <div className="grid gap-3 md:grid-cols-2">
-                      {businessNeedsOptions.map((need) => (
-                        <div key={need} className="flex items-center space-x-2">
-                          <Checkbox
-                            id={`need-${need}`}
-                            checked={formData.businessNeeds.includes(need)}
-                            onCheckedChange={() => handleBusinessNeedToggle(need)}
-                            className="border-border data-[state=checked]:bg-accent"
-                          />
-                          <Label htmlFor={`need-${need}`} className="cursor-pointer text-sm font-normal text-foreground">
-                            {need}
-                          </Label>
-                        </div>
-                      ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="space-y-3">
-                    <Label className="text-foreground">Preferred Technologies (select all that apply)</Label>
-                    <div className="grid gap-3 md:grid-cols-2">
-                      {technologyOptions.map((tech) => (
-                        <div key={tech} className="flex items-center space-x-2">
-                          <Checkbox
-                            id={`tech-${tech}`}
-                            checked={formData.technologies.includes(tech)}
-                            onCheckedChange={() => handleTechnologyToggle(tech)}
-                            className="border-border data-[state=checked]:bg-accent"
-                          />
-                          <Label htmlFor={`tech-${tech}`} className="cursor-pointer text-sm font-normal text-foreground">
-                            {tech}
-                          </Label>
-                        </div>
-                      ))}
+                    <div className="space-y-3">
+                      <Label className="text-foreground">Preferred Technologies (select all that apply)</Label>
+                      <div className="grid gap-3 md:grid-cols-2">
+                        {technologyOptions.map((tech) => (
+                          <div key={tech} className="flex items-center space-x-2">
+                            <Checkbox
+                              id={`tech-${tech}`}
+                              checked={formData.technologies.includes(tech)}
+                              onCheckedChange={() => handleTechnologyToggle(tech)}
+                              className="border-border data-[state=checked]:bg-accent"
+                            />
+                            <Label htmlFor={`tech-${tech}`} className="cursor-pointer text-sm font-normal text-foreground">
+                              {tech}
+                            </Label>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-foreground">Additional Information</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell us about your automation needs and goals..."
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="border-border"
-                    />
-                  </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message" className="text-foreground">Additional Information</Label>
+                      <Textarea
+                        id="message"
+                        placeholder="Tell us about your automation needs and goals..."
+                        rows={5}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className="border-border"
+                      />
+                    </div>
 
-                  <div className="flex flex-col gap-4 sm:flex-row pt-4">
-                    <Button
-                      size="lg"
-                      className="flex-1 bg-primary hover:bg-primary/90"
-                      onClick={(e) => handleSubmit(e, 'expert')}
-                      disabled={isPending || !formData.name || !formData.email}
-                    >
-                      {isPending ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Submitting...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="mr-2 h-4 w-4" />
-                          Talk to Our Experts
-                        </>
-                      )}
-                    </Button>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="flex-1 border-primary/20 hover:bg-primary/5"
-                      onClick={(e) => handleSubmit(e, 'proposal')}
-                      disabled={isPending || !formData.name || !formData.email}
-                    >
-                      {isPending ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Submitting...
-                        </>
-                      ) : (
-                        'Request a Proposal'
-                      )}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="space-y-6">
-              <Card className="border-2 border-border/50">
-                <CardHeader>
-                  <CardTitle className="text-primary">Contact Details</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
-                    <div>
-                      <div className="font-semibold text-foreground">Email</div>
-                      <a
-                        href="mailto:sales@automataxpro.site"
-                        className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                    <div className="flex flex-col gap-4 sm:flex-row pt-4">
+                      <Button
+                        size="lg"
+                        className="flex-1 bg-primary hover:bg-primary/90 shadow-xl shadow-primary/20"
+                        onClick={(e) => handleSubmit(e, 'expert')}
+                        disabled={isPending || !formData.name || !formData.email}
                       >
-                        sales@automataxpro.site
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
-                    <div>
-                      <div className="font-semibold text-foreground">Phone</div>
-                      <a
-                        href="tel:+15551234567"
-                        className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                        {isPending ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Submitting...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="mr-2 h-4 w-4" />
+                            Talk to Our Experts
+                          </>
+                        )}
+                      </Button>
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="flex-1 border-primary/20 hover:bg-primary/5"
+                        onClick={(e) => handleSubmit(e, 'proposal')}
+                        disabled={isPending || !formData.name || !formData.email}
                       >
-                        +91 92114 57736
-                      </a>
+                        {isPending ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Submitting...
+                          </>
+                        ) : (
+                          'Request a Proposal'
+                        )}
+                      </Button>
                     </div>
-                  </div>
+                  </CardContent>
+                </Card>
+              </SpotlightCard>
+            </motion.div>
 
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
-                    <div>
-                      <div className="font-semibold text-foreground">Office</div>
-                      <p className="text-sm text-muted-foreground">
-                        New Delhi
-                        <br />
-                        India
-                      </p>
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)">
+                <Card className="border-2 border-border/50">
+                  <CardHeader>
+                    <CardTitle className="text-primary">Contact Details</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
+                      <div>
+                        <div className="font-semibold text-foreground">Email</div>
+                        <a
+                          href="mailto:sales@automataxpro.site"
+                          className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                        >
+                          sales@automataxpro.site
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
 
-              <Card className="border-2 border-accent/20 bg-gradient-to-br from-primary/5 to-accent/5">
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <Clock className="h-5 w-5 text-accent" />
-                    <h3 className="font-semibold text-foreground">Quick Response Guarantee</h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    We respond to all inquiries within 24 hours during business days. For urgent
-                    matters, please call us directly.
-                  </p>
-                </CardContent>
-              </Card>
+                    <div className="flex items-start space-x-3">
+                      <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
+                      <div>
+                        <div className="font-semibold text-foreground">Phone</div>
+                        <a
+                          href="tel:+919211457736"
+                          className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                        >
+                          +91 92114 57736
+                        </a>
+                      </div>
+                    </div>
 
-              <Card className="border-2 border-accent/20 bg-gradient-to-br from-primary/5 to-accent/5">
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <Shield className="h-5 w-5 text-accent" />
-                    <h3 className="font-semibold text-foreground">Data Security</h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Your information is protected with enterprise-grade encryption. We never share your data with third parties.
-                  </p>
-                </CardContent>
-              </Card>
+                    <div className="flex items-start space-x-3">
+                      <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
+                      <div>
+                        <div className="font-semibold text-foreground">Office</div>
+                        <p className="text-sm text-muted-foreground">
+                          New Delhi
+                          <br />
+                          India
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </SpotlightCard>
 
-              <Card className="border-2 border-border/50">
-                <CardContent className="p-6">
-                  <h3 className="mb-4 font-semibold text-foreground">Business Hours</h3>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Monday - Friday</span>
-                      <span className="font-medium text-foreground">9:00 AM - 6:00 PM IST</span>
+              <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)">
+                <Card className="border-2 border-accent/20 bg-gradient-to-br from-primary/5 to-accent/5">
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <Clock className="h-5 w-5 text-accent" />
+                      <h3 className="font-semibold text-foreground">Quick Response Guarantee</h3>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Saturday</span>
-                      <span className="font-medium text-foreground">10:00 AM - 2:00 PM IST</span>
+                    <p className="text-sm text-muted-foreground">
+                      We respond to all inquiries within 24 hours during business days. For urgent
+                      matters, please call us directly.
+                    </p>
+                  </CardContent>
+                </Card>
+              </SpotlightCard>
+
+              <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)">
+                <Card className="border-2 border-accent/20 bg-gradient-to-br from-primary/5 to-accent/5">
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <Shield className="h-5 w-5 text-accent" />
+                      <h3 className="font-semibold text-foreground">Data Security</h3>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Sunday</span>
-                      <span className="font-medium text-foreground">Closed</span>
+                    <p className="text-sm text-muted-foreground">
+                      Your information is protected with enterprise-grade encryption. We never share your data with third parties.
+                    </p>
+                  </CardContent>
+                </Card>
+              </SpotlightCard>
+
+              <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)">
+                <Card className="border-2 border-border/50">
+                  <CardContent className="p-6">
+                    <h3 className="mb-4 font-semibold text-foreground">Business Hours</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Monday - Friday</span>
+                        <span className="font-medium text-foreground">9:00 AM - 6:00 PM IST</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Saturday</span>
+                        <span className="font-medium text-foreground">10:00 AM - 2:00 PM IST</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Sunday</span>
+                        <span className="font-medium text-foreground">Closed</span>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  </CardContent>
+                </Card>
+              </SpotlightCard>
+            </motion.div>
           </div>
         </div>
       </section>

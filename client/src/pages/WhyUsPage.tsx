@@ -1,11 +1,10 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
   Heart, 
   Users, 
   Shield, 
-  Zap, 
   Target, 
   Code,
   Clock, 
@@ -18,21 +17,18 @@ import {
   MessageSquare,
   Sparkles,
   Brain,
-  Lightbulb,
-  Handshake,
-  Building,
-  Briefcase,
-  Globe,
-  Award
 } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
+import SpotlightCard from '@/components/SpotlightCard';
+import TextType from '@/components/TextType';
 
 export default function WhyUsPage() {
   useEffect(() => {
     document.title = "Why Choose Us | AutomataX";
   }, []);
+  
   const differentiators = [
     {
       icon: Heart,
@@ -143,20 +139,20 @@ export default function WhyUsPage() {
 
   const clientLogos = [
     { 
-        name: 'Wembrace Biopharma', 
-        initials: 'WB',
-        imagePath: '/client-logos/client-logo-1.png'
+      name: 'Wembrace Biopharma', 
+      initials: 'WB',
+      imagePath: '/client-logos/client-logo-1.png'
     },
     { 
-        name: 'imarc', 
-        initials: 'IM',
-        imagePath: '/client-logos/client-logo-2.png'
+      name: 'imarc', 
+      initials: 'IM',
+      imagePath: '/client-logos/client-logo-2.png'
     },
   ];
 
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Hero Section - With Typing Effect */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -166,7 +162,24 @@ export default function WhyUsPage() {
         <div className="container-padding relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 text-primary">
             Automation, But <br />
-            <span className="text-gradient">Human</span>
+            <TextType
+              text={[
+                "Human",
+                "Personal",
+                "Honest",
+                "Real"
+              ]}
+              as="span"
+              className="text-gradient inline-block min-h-[1.2em]"
+              typingSpeed={95}
+              deletingSpeed={58}
+              pauseDuration={2100}
+              loop={true}
+              showCursor={true}
+              cursorCharacter="▎"
+              cursorClassName="text-accent"
+              startOnVisible={true}
+            />
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
             We started AutomataX because we got tired of "solutions" that were more about 
@@ -176,7 +189,7 @@ export default function WhyUsPage() {
         </div>
       </section>
 
-      {/* Our Story - Simplified */}
+      {/* Our Story - Simplified - With Spotlight */}
       <section className="py-20 bg-white">
         <div className="container-padding">
           <div className="max-w-3xl mx-auto">
@@ -185,57 +198,91 @@ export default function WhyUsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-6">
-                  <Brain className="w-10 h-10" />
-                </div>
-                <h2 className="text-3xl font-bold text-primary mb-4">Our Story</h2>
-              </div>
-              
-              <div className="space-y-6 text-lg text-muted-foreground">
-                <p>
-                  Hi, I'm Mr. Singh — founder of AutomataX. I didn’t start out planning to build an automation company.
-                  I started by working closely with leadership teams on process improvement and day-to-day operations.
-                </p>
-
-                <p>
-                  Along the way, I kept seeing the same problems everywhere — repetitive tasks, manual approvals,
-                  broken workflows, and teams spending hours on work that could be done in minutes.
-                  So I began building internal automations and lightweight tools to simplify how work actually gets done.
-                </p>
-
-                <p>
-                  Over time, I became the person teams turned to when operations felt messy or inefficient.
-                  That hands-on experience is what led to AutomataX.
-                  I believe automation shouldn’t be complex or reserved for big tech companies —
-                  every business deserves smart, secure, human-first systems that simply work.
-                </p>
-
-                <div className="pt-6 border-t border-border/50">
-                  <p className="text-foreground/70 italic">
-                    "If you're curious what automation could do for your team, let's have a real conversation—no sales pitch, just ideas."
-                  </p>
-                  <div className="flex items-center space-x-3 mt-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white font-bold">
-                      MS
+              <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)">
+                <Card className="border-2 border-border/50">
+                  <CardContent className="p-12">
+                    <div className="text-center mb-12">
+                      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 text-accent mb-6">
+                        <Brain className="w-10 h-10" />
+                      </div>
+                      <h2 className="text-3xl font-bold text-primary mb-4">
+                        <TextType
+                          text={["Our Story", "Our Journey", "How We Started"]}
+                          as="span"
+                          className="inline-block min-w-[220px]"
+                          typingSpeed={100}
+                          deletingSpeed={60}
+                          pauseDuration={2400}
+                          loop={true}
+                          showCursor={true}
+                          cursorCharacter="▎"
+                          cursorClassName="text-accent"
+                          startOnVisible={true}
+                        />
+                      </h2>
                     </div>
-                    <div>
-                      <div className="font-bold text-primary">Mr. Singh</div>
-                      <div className="text-sm text-muted-foreground">Founder & CEO</div>
+                    
+                    <div className="space-y-6 text-lg text-muted-foreground">
+                      <p>
+                        Hi, I'm Mr. Singh — founder of AutomataX. I didn't start out planning to build an automation company.
+                        I started by working closely with leadership teams on process improvement and day-to-day operations.
+                      </p>
+
+                      <p>
+                        Along the way, I kept seeing the same problems everywhere — repetitive tasks, manual approvals,
+                        broken workflows, and teams spending hours on work that could be done in minutes.
+                        So I began building internal automations and lightweight tools to simplify how work actually gets done.
+                      </p>
+
+                      <p>
+                        Over time, I became the person teams turned to when operations felt messy or inefficient.
+                        That hands-on experience is what led to AutomataX.
+                        I believe automation shouldn't be complex or reserved for big tech companies —
+                        every business deserves smart, secure, human-first systems that simply work.
+                      </p>
+
+                      <div className="pt-6 border-t border-border/50">
+                        <p className="text-foreground/70 italic">
+                          "If you're curious what automation could do for your team, let's have a real conversation—no sales pitch, just ideas."
+                        </p>
+                        <div className="flex items-center space-x-3 mt-4">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white font-bold">
+                            MS
+                          </div>
+                          <div>
+                            <div className="font-bold text-primary">Mr. Singh</div>
+                            <div className="text-sm text-muted-foreground">Founder & CEO</div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </CardContent>
+                </Card>
+              </SpotlightCard>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* What Sets Us Apart */}
+      {/* What Sets Us Apart - With Spotlight */}
       <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container-padding">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-primary mb-4">What Makes Us Different</h2>
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              What Makes Us{" "}
+              <TextType
+                text={["Different", "Unique", "Special"]}
+                as="span"
+                className="text-accent inline-block min-w-[180px]"
+                typingSpeed={105}
+                deletingSpeed={63}
+                pauseDuration={2300}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                startOnVisible={true}
+              />
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We're not just another automation vendor. Here's what really matters:
             </p>
@@ -250,57 +297,69 @@ export default function WhyUsPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="border-2 border-border/50 hover:border-accent/50 transition-all h-full">
-                  <CardContent className="p-8">
-                    <div className="flex items-start space-x-4 mb-6">
-                      <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent">
-                        <item.icon className="h-7 w-7 text-white" />
+                <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
+                  <Card className="border-2 border-border/50 hover:border-accent/50 transition-all h-full">
+                    <CardContent className="p-8">
+                      <div className="flex items-start space-x-4 mb-6">
+                        <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent">
+                          <item.icon className="h-7 w-7 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-primary">{item.title}</h3>
+                          <p className="text-foreground/70 mt-1">{item.description}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-primary">{item.title}</h3>
-                        <p className="text-foreground/70 mt-1">{item.description}</p>
-                      </div>
-                    </div>
-                    <ul className="space-y-2">
-                      {item.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-center space-x-2 text-sm">
-                          <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-accent" />
-                          <span className="text-foreground/80">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                      <ul className="space-y-2">
+                        {item.highlights.map((highlight, idx) => (
+                          <li key={idx} className="flex items-center space-x-2 text-sm">
+                            <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-accent" />
+                            <span className="text-foreground/80">{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Trusted By Section - UPDATED LOGO CAROUSEL */}
+      {/* Trusted By Section - Logo Carousel */}
       <section className="py-20 bg-white">
         <div className="container-padding">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-4">Trusted By Innovators</h2>
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              Trusted By{" "}
+              <TextType
+                text={["Innovators", "Leaders", "Pioneers"]}
+                as="span"
+                className="text-accent inline-block min-w-[190px]"
+                typingSpeed={110}
+                deletingSpeed={65}
+                pauseDuration={2500}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                startOnVisible={true}
+              />
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               From ambitious startups to industry leaders, we're proud to partner with businesses that refuse to settle for ordinary.
             </p>
           </div>
 
-          {/* Logo Carousel - Clean Logos Only */}
           <div className="relative overflow-hidden py-12">
-            {/* Gradient overlays for fade effect */}
             <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
             <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
             
-            {/* First carousel track */}
             <div className="flex animate-slide">
               {[...clientLogos, ...clientLogos, ...clientLogos].map((client, index) => (
                 <div 
                   key={index} 
                   className="flex-shrink-0 mx-8 flex items-center justify-center"
                 >
-                  {/* Logo only - no borders, no text */}
                   <div className="relative w-48 h-24 flex items-center justify-center p-4">
                     <img 
                       src={client.imagePath} 
@@ -308,7 +367,6 @@ export default function WhyUsPage() {
                       className="max-h-full max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                       loading="lazy"
                       onError={(e) => {
-                        // Simple fallback to initials if image fails
                         e.currentTarget.style.display = 'none';
                         const fallback = document.createElement('div');
                         fallback.className = `flex items-center justify-center rounded-lg bg-gradient-to-br from-primary/5 to-accent/5 w-48 h-16`;
@@ -320,15 +378,29 @@ export default function WhyUsPage() {
                 </div>
               ))}
             </div>
-            </div>
           </div>
+        </div>
       </section>
 
-      {/* Our Team */}
+      {/* Our Team - With Spotlight */}
       <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container-padding">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-primary mb-4">Meet Our Team</h2>
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              Meet Our{" "}
+              <TextType
+                text={["Team", "People", "Builders"]}
+                as="span"
+                className="text-accent inline-block min-w-[140px]"
+                typingSpeed={100}
+                deletingSpeed={60}
+                pauseDuration={2200}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                startOnVisible={true}
+              />
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               A small, passionate team of automation builders—engineers, thinkers, and problem-solvers
             </p>
@@ -343,27 +415,43 @@ export default function WhyUsPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="border-2 border-border/50 hover:border-accent/50 transition-all text-center h-full">
-                  <CardContent className="p-8">
-                    <div className={`flex h-24 w-24 items-center justify-center rounded-full ${member.color} text-white text-3xl font-bold mx-auto mb-4`}>
-                      {member.initials}
-                    </div>
-                    <h3 className="text-xl font-bold text-primary mb-1">{member.name}</h3>
-                    <p className="text-accent font-medium mb-4">{member.role}</p>
-                    <p className="text-muted-foreground text-sm">{member.description}</p>
-                  </CardContent>
-                </Card>
+                <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
+                  <Card className="border-2 border-border/50 hover:border-accent/50 transition-all text-center h-full">
+                    <CardContent className="p-8">
+                      <div className={`flex h-24 w-24 items-center justify-center rounded-full ${member.color} text-white text-3xl font-bold mx-auto mb-4`}>
+                        {member.initials}
+                      </div>
+                      <h3 className="text-xl font-bold text-primary mb-1">{member.name}</h3>
+                      <p className="text-accent font-medium mb-4">{member.role}</p>
+                      <p className="text-muted-foreground text-sm">{member.description}</p>
+                    </CardContent>
+                  </Card>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Values */}
+      {/* Our Values - With Spotlight */}
       <section className="py-20 bg-white">
         <div className="container-padding">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-primary mb-4">Our Core Values</h2>
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              Our Core{" "}
+              <TextType
+                text={["Values", "Principles", "Beliefs"]}
+                as="span"
+                className="text-accent inline-block min-w-[170px]"
+                typingSpeed={95}
+                deletingSpeed={58}
+                pauseDuration={2400}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                startOnVisible={true}
+              />
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               How we work, and what we care about most
             </p>
@@ -377,55 +465,89 @@ export default function WhyUsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
-                  <value.icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-2">{value.title}</h3>
-                <p className="text-muted-foreground text-sm">{value.description}</p>
+                <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
+                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
+                      <value.icon className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary mb-2">{value.title}</h3>
+                    <p className="text-muted-foreground text-sm">{value.description}</p>
+                  </div>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Metrics */}
-      <section className="py-20">
-      <div className="container-padding">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-primary mb-4">Our Track Record</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real impact, real transformation. See what we've achieved together.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {metrics.map((metric, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="text-center"
-            >
-              <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 mb-4">
-                <metric.icon className="h-10 w-10 text-primary" />
-              </div>
-              <div className="text-4xl font-bold text-primary mb-2">{metric.value}</div>
-              <div className="text-muted-foreground">{metric.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-      {/* Our Process */}
+      {/* Metrics - With Spotlight */}
       <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container-padding">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-primary mb-4">How We Work</h2>
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              Our{" "}
+              <TextType
+                text={["Track Record", "Impact", "Achievements"]}
+                as="span"
+                className="text-accent inline-block min-w-[230px]"
+                typingSpeed={90}
+                deletingSpeed={55}
+                pauseDuration={2300}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                startOnVisible={true}
+              />
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Real impact, real transformation. See what we've achieved together.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {metrics.map((metric, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
+                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                    <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 mb-4">
+                      <metric.icon className="h-10 w-10 text-primary" />
+                    </div>
+                    <div className="text-4xl font-bold text-primary mb-2">{metric.value}</div>
+                    <div className="text-muted-foreground text-sm">{metric.label}</div>
+                  </div>
+                </SpotlightCard>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Process - With Spotlight */}
+      <section className="py-20 bg-white">
+        <div className="container-padding">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              How We{" "}
+              <TextType
+                text={["Work", "Collaborate", "Deliver"]}
+                as="span"
+                className="text-accent inline-block min-w-[190px]"
+                typingSpeed={105}
+                deletingSpeed={63}
+                pauseDuration={2500}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                startOnVisible={true}
+              />
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Simple, transparent, and focused on your success
             </p>
@@ -440,48 +562,74 @@ export default function WhyUsPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="border-2 border-border/50 hover:border-accent/50 transition-all h-full">
-                  <CardContent className="p-8 text-center">
-                    <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20">
-                      {step.step}
-                    </Badge>
-                    <h3 className="text-xl font-bold text-primary mb-3">{step.title}</h3>
-                    <p className="text-muted-foreground mb-4 text-sm">{step.description}</p>
-                    <div className="flex items-center justify-center space-x-2 text-sm text-accent">
-                      <Clock className="h-4 w-4" />
-                      <span>{step.duration}</span>
-                    </div>
-                  </CardContent>
-                </Card>
+                <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
+                  <Card className="border-2 border-border/50 hover:border-accent/50 transition-all h-full">
+                    <CardContent className="p-8 text-center">
+                      <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20">
+                        {step.step}
+                      </Badge>
+                      <h3 className="text-xl font-bold text-primary mb-3">{step.title}</h3>
+                      <p className="text-muted-foreground mb-4 text-sm">{step.description}</p>
+                      <div className="flex items-center justify-center space-x-2 text-sm text-accent">
+                        <Clock className="h-4 w-4" />
+                        <span>{step.duration}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-20 bg-white">
+      {/* Final CTA - With Spotlight and Typing */}
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-primary mb-6">Ready to Work With Humans?</h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Let's have a real conversation about what automation could do for your team. 
-              No sales pitch, just honest ideas from real automation builders.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8">
-                  Start a Real Conversation
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </a>
-              <a href="/case-studies">
-                <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/5">
-                  See What We've Built
-                </Button>
-              </a>
-            </div>
-          </div>
+          <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.12)">
+            <Card className="border-2 border-accent/20 bg-white">
+              <CardContent className="p-12">
+                <div className="max-w-4xl mx-auto text-center">
+                  <h2 className="text-3xl font-bold text-primary mb-6">
+                    <TextType
+                      text={[
+                        "Ready to Work With Humans?",
+                        "Ready to Build Together?",
+                        "Ready to Start Automating?"
+                      ]}
+                      as="span"
+                      className="inline-block min-w-[450px]"
+                      typingSpeed={80}
+                      deletingSpeed={50}
+                      pauseDuration={2600}
+                      loop={true}
+                      showCursor={true}
+                      cursorCharacter="▎"
+                      cursorClassName="text-accent"
+                      startOnVisible={true}
+                    />
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Let's have a real conversation about what automation could do for your team. 
+                    No sales pitch, just honest ideas from real automation builders.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/contact">
+                      <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 shadow-xl shadow-primary/20">
+                        Start a Real Conversation
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </a>
+                    <a href="/case-studies">
+                      <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/5">
+                        See What We've Built
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </SpotlightCard>
         </div>
       </section>
     </Layout>

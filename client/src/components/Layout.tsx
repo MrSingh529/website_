@@ -1,78 +1,108 @@
-import { ReactNode } from "react";
-import { Navbar } from "./Navbar";
-import { Button } from "./ui/button";
+import React from "react";
+import { AutomataXNav } from "./AutomataXNav";
+import LiquidEther from "./LiquidEther";
 
-interface LayoutProps {
-  children: ReactNode;
-}
-
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-background font-body text-foreground overflow-x-hidden">
-      <Navbar />
-      
-      {children}
-      
-      {/* FOOTER - Updated to use your logo.png */}
-      <footer className="bg-primary py-12 text-white/80 border-t border-white/10">
-        <div className="container-padding">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center mb-6">
-                <img 
-                  src="/logo.png" 
-                  alt="AutomataX Logo" 
-                  className="h-12 w-auto invert brightness-0 saturate-0" 
-                  style={{ filter: 'brightness(0) invert(1)' }}
-                  onError={(e) => {
-                    // Fallback in case logo doesn't load
-                    e.currentTarget.style.display = 'none';
-                    const fallback = document.createElement('div');
-                    fallback.className = 'flex items-center gap-2';
-                    fallback.innerHTML = `
-                      <div class="bg-accent p-1.5 rounded-lg">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
-                      </div>
-                      <span class="text-2xl font-bold text-white">Automata<span class="text-accent">X</span></span>
-                    `;
-                    e.currentTarget.parentNode?.insertBefore(fallback, e.currentTarget);
-                  }}
+    <>
+      {/* Liquid Ether Background - Completely separate, outside main flow */}
+      <LiquidEther
+        colors={["#3B82F6", "#6366F1", "#8B5CF6"]}
+        mouseForce={15}
+        cursorSize={120}
+        autoDemo={true}
+        autoSpeed={0.4}
+        autoIntensity={1.8}
+        resolution={0.6}
+      />
+
+      {/* Main Content Container */}
+      <div className="min-h-screen flex flex-col relative">
+        <AutomataXNav />
+
+        <main className="flex-1 pt-28">
+          {children}
+        </main>
+
+        {/* Footer */}
+        <footer className="border-t border-border/40 py-12 bg-muted/30 backdrop-blur-sm relative z-10">
+          <div className="container max-w-7xl mx-auto px-6 grid gap-12 md:grid-cols-3">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <img
+                  src="/logo.png"
+                  alt="AutomataX Logo"
+                  className="h-8 w-auto"
                 />
               </div>
-              <p className="max-w-sm text-white/60">
-                Empowering enterprises with next-generation automation solutions. Scale faster, reduce costs, and innovate boldly.
+              <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
+                Advanced automation and digital transformation solutions that future-proof your business.
               </p>
             </div>
-            <div>
-              <h4 className="font-bold text-white mb-4">Services</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="/services" className="hover:text-accent transition-colors">Business Process Automation</a></li>
-                <li><a href="/services" className="hover:text-accent transition-colors">RPA Solutions</a></li>
-                <li><a href="/services" className="hover:text-accent transition-colors">Workflow Consulting</a></li>
-                <li><a href="/services" className="hover:text-accent transition-colors">Custom Development</a></li>
-              </ul>
+
+            {/* Quick Links */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-lg tracking-tight text-primary">
+                Quick Links
+              </h4>
+              <nav className="flex flex-col gap-2">
+                <a href="/services" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Services
+                </a>
+                <a href="/use-cases" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Use Cases
+                </a>
+                <a href="/case-studies" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Case Studies
+                </a>
+                <a href="/technology" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Technology
+                </a>
+              </nav>
             </div>
-            <div>
-              <h4 className="font-bold text-white mb-4">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="/" className="hover:text-accent transition-colors">About Us</a></li>
-                <li><a href="/use-cases" className="hover:text-accent transition-colors">Use Cases</a></li>
-                <li><a href="/case-studies" className="hover:text-accent transition-colors">Case Studies</a></li>
-                <li><a href="/benefits-roi" className="hover:text-accent transition-colors">Benefits & ROI</a></li>
-                <li><a href="/technology" className="hover:text-accent transition-colors">Technology</a></li>
-                <li><a href="/contact" className="hover:text-accent transition-colors">Contact</a></li>
-              </ul>
+
+            {/* Contact Info */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-lg tracking-tight text-primary">
+                Get in Touch
+              </h4>
+              <div className="text-sm text-muted-foreground space-y-2">
+                <p>New Delhi, India</p>
+                <p>sales@automataxpro.site</p>
+                <p>+91 92114 57736</p>
+              </div>
+              <div className="pt-4">
+                <a href="/contact">
+                  <button className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-semibold transition-colors">
+                    Contact Us
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/40">
-            <p>&copy; {new Date().getFullYear()} AutomataX Inc. All rights reserved.</p>
-            <div className="flex gap-4 mt-4 md:mt-0">
-              <a href="https://www.linkedin.com/company/automataxpro/" className="hover:text-white transition-colors">LinkedIn</a>
-              <a href="#" className="hover:text-white transition-colors">GitHub</a>
+
+          {/* Copyright */}
+          <div className="container max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-border/40">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+              <p>© {new Date().getFullYear()} AutomataX. All rights reserved.</p>
+              <div className="flex gap-6">
+                <a href="/privacy" className="hover:text-primary transition-colors">
+                  Privacy Policy
+                </a>
+                <a href="/terms" className="hover:text-primary transition-colors">
+                  Terms of Service
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/automataxpro/"
+                  className="hover:text-primary transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </>
   );
 }

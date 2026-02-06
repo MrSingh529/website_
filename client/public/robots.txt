@@ -1,0 +1,65 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /server/
+Disallow: /script/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.env$
+
+Sitemap: https://automataxpro.site/sitemap.xml
+Sitemap: https://www.automataxpro.site/sitemap.xml
+
+# Crawl delay to prevent server overload
+Crawl-delay: 2
+
+# Preferred host (choose one)
+Host: automataxpro.site
+# OR
+Host: www.automataxpro.site
+
+# SEO bots
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 1
+
+# Social media bots
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: FacebookExternalHit
+Allow: /
+Crawl-delay: 1
+
+# Scrapers/Unwanted bots
+User-agent: AhrefsBot
+Disallow: /
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Disallow: /
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+Crawl-delay: 10
+
+User-agent: DotBot
+Disallow: /
+Crawl-delay: 10

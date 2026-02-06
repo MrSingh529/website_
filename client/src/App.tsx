@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ClickSpark from "@/components/ClickSpark";
 import Home from "@/pages/Home";
 import ServicesPage from "@/pages/ServicesPage";
 import UseCasesPage from "@/pages/UseCasesPage";
@@ -33,8 +34,17 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Router />
+        <ClickSpark
+          sparkColor='#0ea5e9'
+          sparkSize={12}
+          sparkRadius={20}
+          sparkCount={8}
+          duration={500}
+          easing='ease-out'
+        >
+          <Toaster />
+          <Router />
+        </ClickSpark>
       </TooltipProvider>
     </QueryClientProvider>
   );

@@ -6,11 +6,14 @@ import { ArrowRight, Building2, Factory, ShoppingBag, Heart, Users, DollarSign, 
 import { Layout } from '@/components/Layout';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
+import SpotlightCard from '@/components/SpotlightCard';
+import TextType from '@/components/TextType';
 
 export default function UseCasesPage() {
   useEffect(() => {
     document.title = "Use Cases | AutomataX";
   }, []);
+  
   const industries = [
     {
       name: 'Finance',
@@ -238,7 +241,7 @@ export default function UseCasesPage() {
 
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Hero Section - With Typing Effect */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -248,7 +251,24 @@ export default function UseCasesPage() {
         <div className="container-padding relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 text-primary">
             Automation Across <br />
-            <span className="text-gradient">Industries & Functions</span>
+            <TextType
+              text={[
+                "Industries & Functions",
+                "Every Business Sector",
+                "All Departments",
+                "Your Organization"
+              ]}
+              as="span"
+              className="text-gradient inline-block min-h-[1.2em]"
+              typingSpeed={75}
+              deletingSpeed={48}
+              pauseDuration={2100}
+              loop={true}
+              showCursor={true}
+              cursorCharacter="▎"
+              cursorClassName="text-accent"
+              startOnVisible={true}
+            />
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
             Discover how AutomataX delivers value across different industries and business
@@ -257,11 +277,25 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Benefits Section - With Spotlight */}
       <section className="py-20 bg-white">
         <div className="container-padding">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-4">Why Our Use Cases Work</h2>
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              Why Our{" "}
+              <TextType
+                text={["Use Cases Work", "Solutions Deliver", "Approaches Succeed"]}
+                as="span"
+                className="text-accent inline-block min-w-[260px]"
+                typingSpeed={95}
+                deletingSpeed={57}
+                pauseDuration={2400}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                startOnVisible={true}
+              />
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Proven approaches that deliver tangible results across diverse business environments
             </p>
@@ -275,25 +309,42 @@ export default function UseCasesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
-                  <benefit.icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-2">{benefit.title}</h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
+                <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
+                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
+                      <benefit.icon className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary mb-2">{benefit.title}</h3>
+                    <p className="text-muted-foreground">{benefit.description}</p>
+                  </div>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* Main Content - With Spotlight and Typing */}
       <section className="py-20 bg-muted/30">
         <div className="container-padding">
           <Tabs defaultValue="industry" className="w-full">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-primary mb-6">Browse Use Cases</h2>
+              <h2 className="text-3xl font-bold text-primary mb-6">
+                Browse{" "}
+                <TextType
+                  text={["Use Cases", "Solutions", "Examples"]}
+                  as="span"
+                  className="text-accent inline-block min-w-[180px]"
+                  typingSpeed={105}
+                  deletingSpeed={62}
+                  pauseDuration={2500}
+                  loop={true}
+                  showCursor={true}
+                  cursorCharacter="▎"
+                  startOnVisible={true}
+                />
+              </h2>
               <TabsList className="inline-flex h-12 p-1 bg-muted rounded-xl">
                 <TabsTrigger value="industry" className="rounded-lg px-8 data-[state=active]:bg-primary data-[state=active]:text-white">
                   By Industry
@@ -316,43 +367,47 @@ export default function UseCasesPage() {
                   <div className="grid gap-8 lg:grid-cols-3">
                     <div className="lg:col-span-1">
                       <div className="sticky top-24 space-y-6">
-                        <div className={`overflow-hidden rounded-2xl border-2 border-border/50 p-8 bg-gradient-to-br ${industry.color}/10`}>
-                          <div className="flex items-center space-x-4 mb-4">
-                            <div className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${industry.color}`}>
-                              <industry.icon className="h-7 w-7 text-white" />
+                        <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.12)">
+                          <div className={`overflow-hidden rounded-2xl border-2 border-border/50 p-8 bg-gradient-to-br ${industry.color}/10`}>
+                            <div className="flex items-center space-x-4 mb-4">
+                              <div className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${industry.color}`}>
+                                <industry.icon className="h-7 w-7 text-white" />
+                              </div>
+                              <h2 className="text-3xl font-bold text-primary">{industry.name}</h2>
                             </div>
-                            <h2 className="text-3xl font-bold text-primary">{industry.name}</h2>
+                            <p className="text-foreground/70">{industry.description}</p>
                           </div>
-                          <p className="text-foreground/70">{industry.description}</p>
-                        </div>
+                        </SpotlightCard>
                       </div>
                     </div>
 
                     <div className="lg:col-span-2">
                       <div className="grid gap-6">
                         {industry.useCases.map((useCase, idx) => (
-                          <Card key={idx} className="border-2 border-border/50 hover:border-accent/50 transition-all hover:shadow-lg">
-                            <CardHeader>
-                              <div className="flex items-start justify-between">
-                                <CardTitle className="text-xl text-primary">{useCase.title}</CardTitle>
-                                <Badge className="bg-accent/10 text-accent hover:bg-accent/20">
-                                  {useCase.impact}
-                                </Badge>
-                              </div>
-                              <CardDescription className="text-base text-foreground/70">
-                                {useCase.description}
-                              </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                              <div className="flex flex-wrap gap-2">
-                                {useCase.features.map((feature, featureIdx) => (
-                                  <Badge key={featureIdx} variant="outline" className="border-border/50">
-                                    {feature}
+                          <SpotlightCard key={idx} spotlightColor="rgba(59, 130, 246, 0.08)">
+                            <Card className="border-2 border-border/50 hover:border-accent/50 transition-all hover:shadow-lg">
+                              <CardHeader>
+                                <div className="flex items-start justify-between">
+                                  <CardTitle className="text-xl text-primary">{useCase.title}</CardTitle>
+                                  <Badge className="bg-accent/10 text-accent hover:bg-accent/20">
+                                    {useCase.impact}
                                   </Badge>
-                                ))}
-                              </div>
-                            </CardContent>
-                          </Card>
+                                </div>
+                                <CardDescription className="text-base text-foreground/70">
+                                  {useCase.description}
+                                </CardDescription>
+                              </CardHeader>
+                              <CardContent>
+                                <div className="flex flex-wrap gap-2">
+                                  {useCase.features.map((feature, featureIdx) => (
+                                    <Badge key={featureIdx} variant="outline" className="border-border/50">
+                                      {feature}
+                                    </Badge>
+                                  ))}
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </SpotlightCard>
                         ))}
                       </div>
                     </div>
@@ -374,29 +429,31 @@ export default function UseCasesPage() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="border-2 border-border/50 hover:border-accent/50 transition-all hover:shadow-lg">
-                      <CardHeader className="bg-gradient-to-br from-primary/5 to-accent/5">
-                        <div className="flex items-center space-x-3">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
-                            <func.icon className="h-6 w-6 text-accent" />
-                          </div>
-                          <CardTitle className="text-2xl text-primary">{func.name}</CardTitle>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="space-y-6 p-6">
-                        {func.useCases.map((useCase, idx) => (
-                          <div key={idx} className="space-y-3 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
-                            <div className="flex items-start justify-between">
-                              <h3 className="font-semibold text-primary">{useCase.title}</h3>
-                              <Badge variant="secondary" className="bg-accent/10 text-accent">
-                                {useCase.impact}
-                              </Badge>
+                    <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
+                      <Card className="border-2 border-border/50 hover:border-accent/50 transition-all hover:shadow-lg h-full">
+                        <CardHeader className="bg-gradient-to-br from-primary/5 to-accent/5">
+                          <div className="flex items-center space-x-3">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
+                              <func.icon className="h-6 w-6 text-accent" />
                             </div>
-                            <p className="text-sm text-muted-foreground">{useCase.description}</p>
+                            <CardTitle className="text-2xl text-primary">{func.name}</CardTitle>
                           </div>
-                        ))}
-                      </CardContent>
-                    </Card>
+                        </CardHeader>
+                        <CardContent className="space-y-6 p-6">
+                          {func.useCases.map((useCase, idx) => (
+                            <div key={idx} className="space-y-3 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
+                              <div className="flex items-start justify-between">
+                                <h3 className="font-semibold text-primary">{useCase.title}</h3>
+                                <Badge variant="secondary" className="bg-accent/10 text-accent">
+                                  {useCase.impact}
+                                </Badge>
+                              </div>
+                              <p className="text-sm text-muted-foreground">{useCase.description}</p>
+                            </div>
+                          ))}
+                        </CardContent>
+                      </Card>
+                    </SpotlightCard>
                   </motion.div>
                 ))}
               </div>
@@ -405,11 +462,25 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      {/* Statistics Section */}
+      {/* Statistics Section - With Spotlight */}
       <section className="py-20 bg-white">
         <div className="container-padding">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-4">Proven Results</h2>
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              <TextType
+                text={["Proven Results", "Real Impact", "Measurable Outcomes"]}
+                as="span"
+                className="inline-block min-w-[300px]"
+                typingSpeed={90}
+                deletingSpeed={54}
+                pauseDuration={2300}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                cursorClassName="text-accent"
+                startOnVisible={true}
+              />
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Real impact delivered across hundreds of successful implementations
             </p>
@@ -428,47 +499,66 @@ export default function UseCasesPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center"
               >
-                <div className="text-4xl font-bold text-accent mb-2">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.08)" className="h-full">
+                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                    <div className="text-4xl font-bold text-accent mb-2">{stat.value}</div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </div>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-white">
-      <div className="container-padding">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-primary md:text-4xl">
-            Ready to Apply These Use Cases?
-          </h2>
-          <p className="mb-8 text-lg text-muted-foreground">
-            Schedule a consultation with our automation experts to discuss how these proven use cases
-            can be customized for your specific business needs.
-          </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="/contact">
-              <Button size="lg" className="w-full bg-primary text-white hover:bg-primary/90 sm:w-auto">
-                Discuss Your Use Case
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </a>
-            <a href="/case-studies">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full border-primary/20 text-primary hover:bg-primary/5 sm:w-auto"
-              >
-                View Case Studies
-              </Button>
-            </a>
+      {/* CTA Section - With Typing */}
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
+        <div className="container-padding">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold text-primary md:text-4xl">
+              <TextType
+                text={[
+                  "Ready to Apply These Use Cases?",
+                  "Ready to Implement Solutions?",
+                  "Ready to See Results?"
+                ]}
+                as="span"
+                className="inline-block min-w-[420px]"
+                typingSpeed={82}
+                deletingSpeed={51}
+                pauseDuration={2600}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                cursorClassName="text-accent"
+                startOnVisible={true}
+              />
+            </h2>
+            <p className="mb-8 text-lg text-muted-foreground">
+              Schedule a consultation with our automation experts to discuss how these proven use cases
+              can be customized for your specific business needs.
+            </p>
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <a href="/contact">
+                <Button size="lg" className="w-full bg-primary text-white hover:bg-primary/90 sm:w-auto shadow-xl shadow-primary/20">
+                  Discuss Your Use Case
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+              <a href="/case-studies">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full border-primary/20 text-primary hover:bg-primary/5 sm:w-auto"
+                >
+                  View Case Studies
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </Layout>
   );
 }

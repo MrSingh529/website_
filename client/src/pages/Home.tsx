@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { Navbar } from "@/components/Navbar";
 import { ServiceCard } from "@/components/ServiceCard";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ContactForm } from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 import { motion } from "framer-motion";
-import { Link as ScrollLink } from "react-scroll";
+import SpotlightCard from "@/components/SpotlightCard";
+import TextType from "@/components/TextType";
 import { 
   Bot, 
   Workflow, 
@@ -18,7 +18,6 @@ import {
   Database,
   ArrowRight,
   ChevronRight,
-  Cpu
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -26,6 +25,7 @@ export default function Home() {
   useEffect(() => {
     document.title = "AutomataX | Your Future, Automated.";
   }, []);
+  
   const clientLogos = [
     { name: 'Wembrace Biopharma', initials: 'WB', imagePath: '/client-logos/client-logo-1.png' },
     { name: 'imarc', initials: 'IM', imagePath: '/client-logos/client-logo-2.png' },
@@ -36,7 +36,6 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-          {/* Abstract Grid Background */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
           <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-accent opacity-20 blur-[100px]"></div>
         </div>
@@ -50,13 +49,33 @@ export default function Home() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-6 border border-accent/20">
               Future-Proof Your Business
             </span>
+            
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 text-primary">
               Advanced Automation & <br />
-              <span className="text-gradient">Digital Transformation</span>
+              <TextType
+                text={[
+                  "Digital Transformation",
+                  "Process Optimization",
+                  "Intelligent Workflows",
+                  "Business Automation"
+                ]}
+                as="span"
+                className="text-gradient inline-block min-h-[1.2em]"
+                typingSpeed={80}
+                deletingSpeed={50}
+                pauseDuration={2000}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                cursorClassName="text-accent"
+                startOnVisible={true}
+              />
             </h1>
+            
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               We engineer intelligent workflows and robotic process automation to eliminate manual errors, scale operations, and unlock actionable insights.
             </p>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/contact">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl shadow-xl shadow-primary/20">
@@ -71,25 +90,19 @@ export default function Home() {
             </div>
           </motion.div>
           
-          {/* Trusted By Strip - UPDATED WITH LOGO CAROUSEL */}
+          {/* Logo Carousel */}
           <div className="mt-20 border-t border-border/40 pt-10">
             <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-8">
               Trusted by innovative leaders
             </p>
             
-            {/* Logo Carousel */}
             <div className="relative overflow-hidden">
-              {/* Gradient overlays for fade effect */}
               <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10"></div>
               <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10"></div>
               
-              {/* Logo Carousel Track */}
               <div className="flex animate-slide">
                 {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((client, index) => (
-                  <div 
-                    key={index} 
-                    className="flex-shrink-0 mx-8 flex items-center justify-center"
-                  >
+                  <div key={index} className="flex-shrink-0 mx-8 flex items-center justify-center">
                     <div className="relative w-48 h-16 flex items-center justify-center p-2">
                       <img 
                         src={client.imagePath} 
@@ -97,7 +110,6 @@ export default function Home() {
                         className="max-h-12 max-w-full object-contain grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
                         loading="lazy"
                         onError={(e) => {
-                          // Fallback to initials if image fails to load
                           e.currentTarget.style.display = 'none';
                           const fallback = document.createElement('div');
                           fallback.className = `flex items-center justify-center rounded-lg bg-gradient-to-br from-primary/5 to-accent/5 w-32 h-12`;
@@ -114,13 +126,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES SECTION */}
-      <section id="services" className="py-20 lg:py-32 bg-white relative">
+      {/* SERVICES SECTION - With Spotlight */}
+      <section id="services" className="py-20 lg:py-32 bg-gradient-soft relative">
         <div className="container-padding">
-          <SectionHeader 
-            title="Our Core Services" 
-            subtitle="End-to-end automation solutions tailored to your unique business architecture."
-          />
+          <div className="mb-12 text-center">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary"
+            >
+              Our Core{" "}
+              <TextType
+                text={["Services", "Solutions", "Expertise"]}
+                as="span"
+                className="text-accent inline-block min-w-[200px] text-left"
+                typingSpeed={100}
+                deletingSpeed={60}
+                pauseDuration={2500}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                startOnVisible={true}
+              />
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            >
+              End-to-end automation solutions tailored to your unique business architecture.
+            </motion.p>
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-1 w-24 bg-accent mt-6 mx-auto"
+            />
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard 
@@ -163,13 +210,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* USE CASES SECTION */}
-      <section id="use-cases" className="py-20 bg-muted/30">
+      {/* USE CASES SECTION - With Spotlight and Typing */}
+      <section id="use-cases" className="py-20 bg-gradient-primary-soft">
         <div className="container-padding">
-          <SectionHeader 
-            title="Industry Solutions" 
-            subtitle="Proven automation strategies across key sectors."
-          />
+          <div className="mb-12 text-center">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary"
+            >
+              <TextType
+                text={["Industry Solutions", "Vertical Expertise", "Sector Automation"]}
+                as="span"
+                className="inline-block min-w-[300px]"
+                typingSpeed={90}
+                deletingSpeed={55}
+                pauseDuration={2200}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                cursorClassName="text-accent"
+                startOnVisible={true}
+              />
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            >
+              Proven automation strategies across key sectors.
+            </motion.p>
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-1 w-24 bg-accent mt-6 mx-auto"
+            />
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div 
@@ -182,31 +264,29 @@ export default function Home() {
                 { 
                   industry: "Finance & Banking", 
                   desc: "Automate loan processing, KYC verification, and fraud detection workflows.",
-                  image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=800&auto=format&fit=crop&q=60"
                 },
                 { 
                   industry: "Healthcare", 
                   desc: "Streamline patient scheduling, claims processing, and compliance reporting.",
-                  image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=60" 
                 },
                 { 
                   industry: "Manufacturing", 
                   desc: "Optimize supply chain logistics, inventory management, and predictive maintenance.",
-                  image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop&q=60"
                 },
                 { 
                   industry: "Retail & E-commerce", 
                   desc: "Automate order fulfillment, customer support tickets, and inventory sync.",
-                  image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&auto=format&fit=crop&q=60"
                 }
               ].map((item, idx) => (
-                <div key={idx} className="group bg-white p-6 rounded-xl shadow-sm border border-border hover:border-accent/50 transition-all cursor-default">
-                  <h3 className="text-xl font-bold text-primary group-hover:text-accent transition-colors flex justify-between items-center">
-                    {item.industry}
-                    <ChevronRight className="opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
-                  </h3>
-                  <p className="text-muted-foreground mt-2">{item.desc}</p>
-                </div>
+                <SpotlightCard key={idx} spotlightColor="rgba(59, 130, 246, 0.1)">
+                  <div className="group bg-white p-6 rounded-xl shadow-sm border border-border hover:border-accent/50 transition-all cursor-default">
+                    <h3 className="text-xl font-bold text-primary group-hover:text-accent transition-colors flex justify-between items-center">
+                      {item.industry}
+                      <ChevronRight className="opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
+                    </h3>
+                    <p className="text-muted-foreground mt-2">{item.desc}</p>
+                  </div>
+                </SpotlightCard>
               ))}
             </motion.div>
             
@@ -216,7 +296,6 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl"
             >
-              {/* Abstract technology visualization image */}
               <img 
                 src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&auto=format&fit=crop&q=80" 
                 alt="Technology visualization" 
@@ -235,64 +314,130 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BENEFITS / WHY US */}
-      <section id="benefits" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
-      <div className="container-padding">
-        <SectionHeader 
-          title="Why Choose AutomataX" 
-          subtitle="We deliver measurable ROI, not just technology." 
-          alignment="center" 
-        />
-        
-        <Card className="border-2 border-accent/20 bg-white/60 backdrop-blur-sm">
-          <CardContent className="p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { icon: Clock, title: "Efficiency", desc: "Reduce manual work hours by up to 80% within the first year." },
-                { icon: ShieldCheck, title: "Reliability", desc: "Enterprise-grade security and 99.9% uptime for critical bots." },
-                { icon: TrendingUp, title: "Scalability", desc: "Solutions that grow with you—from 1 bot to 1,000." },
-                { icon: Code2, title: "Expertise", desc: "A dedicated team of certified automation engineers." },
-              ].map((item, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mb-4 mx-auto">
-                    <item.icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-primary mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
+      {/* BENEFITS / WHY US - With Spotlight */}
+      <section id="benefits" className="py-20 bg-mesh-gradient">
+        <div className="container-padding">
+          <div className="mb-12 text-center">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary"
+            >
+              Why Choose{" "}
+              <TextType
+                text={["AutomataX", "Our Solutions", "Our Team"]}
+                as="span"
+                className="text-accent inline-block min-w-[250px]"
+                typingSpeed={110}
+                deletingSpeed={65}
+                pauseDuration={2300}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                startOnVisible={true}
+              />
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            >
+              We deliver measurable ROI, not just technology.
+            </motion.p>
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-1 w-24 bg-accent mt-6 mx-auto"
+            />
+          </div>
+          
+          <Card className="border-2 border-accent/20 bg-white/60 backdrop-blur-sm">
+            <CardContent className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  { icon: Clock, title: "Efficiency", desc: "Reduce manual work hours by up to 80% within the first year." },
+                  { icon: ShieldCheck, title: "Reliability", desc: "Enterprise-grade security and 99.9% uptime for critical bots." },
+                  { icon: TrendingUp, title: "Scalability", desc: "Solutions that grow with you—from 1 bot to 1,000." },
+                  { icon: Code2, title: "Expertise", desc: "A dedicated team of certified automation engineers." },
+                ].map((item, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                  >
+                    <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.08)" className="h-full">
+                      <div className="text-center p-6 bg-white/50 rounded-xl h-full flex flex-col items-center justify-center">
+                        <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mb-4 mx-auto">
+                          <item.icon className="w-8 h-8 text-primary" />
+                        </div>
+                        <h3 className="text-xl font-bold text-primary mb-2">{item.title}</h3>
+                        <p className="text-muted-foreground text-sm">{item.desc}</p>
+                      </div>
+                    </SpotlightCard>
+                  </motion.div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
-      {/* TECH STACK SECTION */}
-      <section id="tech-stack" className="py-20 bg-white">
+      {/* TECH STACK SECTION - With Typing */}
+      <section id="tech-stack" className="py-20 bg-gradient-accent-soft">
         <div className="container-padding text-center">
-          <h2 className="text-3xl font-bold text-primary mb-12">Our Technology Stack</h2>
+          <h2 className="text-3xl font-bold text-primary mb-4">
+            Our{" "}
+            <TextType
+              text={["Technology Stack", "Tech Arsenal", "Tool Suite"]}
+              as="span"
+              className="text-accent inline-block min-w-[280px]"
+              typingSpeed={95}
+              deletingSpeed={58}
+              pauseDuration={2100}
+              loop={true}
+              showCursor={true}
+              cursorCharacter="▎"
+              startOnVisible={true}
+            />
+          </h2>
+          <p className="text-muted-foreground mb-12">Powered by industry-leading platforms</p>
           <div className="flex flex-wrap justify-center gap-4">
-             {["Python", "UiPath", "Power Automate", "AWS", "Azure", "TensorFlow", "React", "Node.js", "Docker", "Kubernetes"].map((tech, idx) => (
-               <div key={idx} className="px-6 py-3 bg-muted rounded-full text-primary font-medium border border-transparent hover:border-accent hover:text-accent transition-all cursor-default">
-                 {tech}
-               </div>
-             ))}
+            {["Python", "UiPath", "Power Automate", "AWS", "Azure", "TensorFlow", "React", "Node.js", "Docker", "Kubernetes"].map((tech, idx) => (
+              <div key={idx} className="px-6 py-3 bg-muted rounded-full text-primary font-medium border border-transparent hover:border-accent hover:text-accent transition-all cursor-default">
+                {tech}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CONTACT SECTION */}
-      <section id="contact" className="py-24 bg-muted/30 relative">
+      <section id="contact" className="py-24 bg-gradient-soft relative">
         <div className="container-padding">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-primary mb-4">Start Your Transformation</h2>
+            <h2 className="text-4xl font-bold text-primary mb-4">
+              <TextType
+                text={["Start Your Transformation", "Begin Your Journey", "Accelerate Innovation"]}
+                as="span"
+                className="inline-block min-w-[400px]"
+                typingSpeed={85}
+                deletingSpeed={52}
+                pauseDuration={2400}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="▎"
+                cursorClassName="text-accent"
+                startOnVisible={true}
+              />
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Ready to automate your workflows? Fill out the form below and let's discuss how we can help your business scale.
             </p>
@@ -318,24 +463,26 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-white p-8 rounded-2xl shadow-lg border border-border">
-                <h3 className="text-xl font-bold text-primary mb-4">What happens next?</h3>
-                <ol className="space-y-4">
-                  {[
-                    "We review your business needs.",
-                    "Our team schedules a discovery call.",
-                    "We present a tailored automation roadmap.",
-                    "Implementation begins."
-                  ].map((step, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
-                        {idx + 1}
-                      </div>
-                      <span className="text-muted-foreground">{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
+              <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)">
+                <div className="bg-white p-8 rounded-2xl shadow-lg border border-border">
+                  <h3 className="text-xl font-bold text-primary mb-4">What happens next?</h3>
+                  <ol className="space-y-4">
+                    {[
+                      "We review your business needs.",
+                      "Our team schedules a discovery call.",
+                      "We present a tailored automation roadmap.",
+                      "Implementation begins."
+                    ].map((step, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <div className="w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+                          {idx + 1}
+                        </div>
+                        <span className="text-muted-foreground">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </SpotlightCard>
             </div>
 
             <div className="lg:col-span-7">
