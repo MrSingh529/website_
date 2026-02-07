@@ -159,7 +159,7 @@ export default function BenefitsROIPage() {
       </section>
 
       {/* Key Benefits - With Spotlight */}
-      <section id="benefits-section" className="py-20 lg:py-32 bg-white relative">
+      <section id="benefits-section" className="py-20 lg:py-32 bg-muted/40 relative">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
@@ -295,7 +295,7 @@ export default function BenefitsROIPage() {
       </section>
 
       {/* ROI Timeline - With Spotlight and Typing */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
