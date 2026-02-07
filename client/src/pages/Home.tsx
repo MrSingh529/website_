@@ -71,31 +71,44 @@ export default function Home() {
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              We engineer intelligent workflows and robotic process automation to eliminate manual errors, scale operations, and unlock actionable insights.
+              We engineer intelligent workflows and RPA that have already cut report creation time by 95% and billing cycles by 98% for our clients.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/contact">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl shadow-xl shadow-primary/20">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl shadow-xl shadow-primary/20"
+                >
                   Talk to Our Experts <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </a>
+
               <a href="/services">
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-card/60 backdrop-blur border-border/40 hover:bg-card text-lg px-8 py-6 rounded-xl"
-              >
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="bg-card/60 backdrop-blur border-border/40 hover:bg-card text-lg px-8 py-6 rounded-xl"
+                >
                   Explore Services
                 </Button>
               </a>
             </div>
+
+            <p className="mt-4 text-xs text-muted-foreground text-center">
+              No pushy sales — just a 30-minute clarity call with an automation expert.
+            </p>
           </motion.div>
           
           {/* Logo Carousel */}
           <div className="mt-20 border-t border-border/40 pt-10">
-            <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-8">
+            <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-4">
               Trusted by innovative leaders
+            </p>
+
+            <p className="text-center text-sm text-muted-foreground mb-6">
+              IMARC Group cut report production time by <span className="font-semibold text-primary">95%</span> ·
+              Apex Service Solutions reduced billing from <span className="font-semibold text-primary">5 days to 1 hour</span>
             </p>
             
             <div className="relative overflow-hidden">
