@@ -214,7 +214,7 @@ export default function TechnologyStackPage() {
       </section>
 
       {/* Technology Overview - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="grid gap-12 lg:grid-cols-2 mb-16">
             <motion.div
@@ -365,7 +365,7 @@ export default function TechnologyStackPage() {
                 transition={{ delay: index * 0.05 }}
               >
                 <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)">
-                  <Card className="border-2 border-border/50 bg-white hover:border-accent/50 hover:shadow-lg transition-all">
+                  <Card className="border-2 border-border/50 bg-card hover:border-accent/50 hover:shadow-lg transition-all">
                     <CardContent className="p-6 text-center">
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent mb-3">
                         <span className="font-bold">{platform.charAt(0)}</span>
@@ -393,7 +393,7 @@ export default function TechnologyStackPage() {
       </section>
 
       {/* Tech Stack Features - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
@@ -448,7 +448,7 @@ export default function TechnologyStackPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
-                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                  <div className="text-center p-6 bg-card rounded-xl h-full flex flex-col items-center justify-center">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
                       <feature.icon className="w-8 h-8" />
                     </div>
