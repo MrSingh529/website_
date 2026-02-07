@@ -152,7 +152,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Features - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
@@ -185,7 +185,7 @@ export default function ServicesPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
-                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                  <div className="text-center p-6 bg-card rounded-xl h-full flex flex-col items-center justify-center">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
                       <feature.icon className="w-8 h-8" />
                     </div>
@@ -202,7 +202,7 @@ export default function ServicesPage() {
       {/* Services Grid - With Spotlight */}
       <section id="services" className="py-20 lg:py-32">
         <div className="container-padding">
-          <div className="rounded-3xl bg-white/70 backdrop-blur shadow-lg border border-white/60 text-center p-12 mb-16">
+          <div className="rounded-3xl bg-card/70 backdrop-blur shadow-lg border border-border/60 text-center p-12 mb-16">
             <h2 className="text-3xl font-bold text-primary mb-4">
               Our{" "}
               <TextType
@@ -291,7 +291,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Section - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
