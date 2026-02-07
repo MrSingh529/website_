@@ -183,14 +183,39 @@
   background-size: 50px 50px;
 }
 
-/* Ensure body/html allow fixed backgrounds */
-html, body, #root {
-  position: relative;
-  overflow-x: hidden;
+/* Animated Gradient - Main Sections */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
-/* Ensure all content is above the liquid background */
-main, nav, header, footer {
-  position: relative;
-  z-index: 1;
+.bg-animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    #ffffff,
+    #f0f7ff,
+    #e6f0ff,
+    #f5f8ff,
+    #ffffff
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease infinite;
+}
+
+/* Hero Gradient - More prominent */
+.bg-animated-gradient-hero {
+  background: linear-gradient(
+    -45deg,
+    #ffffff,
+    #e6f0ff,
+    #dae6ff,
+    #eff5ff,
+    #ffffff
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
 }

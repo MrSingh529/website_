@@ -126,7 +126,7 @@ export default function ContactPage() {
   if (isSuccess) {
     return (
       <Layout>
-        <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <section className="py-20 bg-gradient-primary-soft">
           <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
             <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-accent opacity-20 blur-[100px]"></div>
@@ -167,7 +167,7 @@ export default function ContactPage() {
   return (
     <Layout>
       {/* Hero Section - With Typing Effect */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <section className="py-20 bg-mesh-gradient">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
           <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-accent opacity-20 blur-[100px]"></div>
@@ -203,7 +203,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-mesh-gradient">
         <div className="container-padding">
           <div className="grid gap-12 lg:grid-cols-3">
             <motion.div 

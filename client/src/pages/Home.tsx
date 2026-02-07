@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { ServiceCard } from "@/components/ServiceCard";
-import { SectionHeader } from "@/components/SectionHeader";
 import { ContactForm } from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
@@ -34,10 +33,9 @@ export default function Home() {
   return (
     <Layout>
       {/* HERO SECTION */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-white">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-accent opacity-20 blur-[100px]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
         </div>
 
         <div className="container-padding relative z-10 text-center">
@@ -83,7 +81,7 @@ export default function Home() {
                 </Button>
               </a>
               <a href="/services">
-                <Button variant="outline" size="lg" className="bg-white/50 backdrop-blur border-primary/20 hover:bg-white text-lg px-8 py-6 rounded-xl">
+                <Button variant="outline" size="lg" className="bg-white/60 backdrop-blur border-primary/20 hover:bg-white text-lg px-8 py-6 rounded-xl">
                   Explore Services
                 </Button>
               </a>
@@ -126,8 +124,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES SECTION - With Spotlight */}
-      <section id="services" className="py-20 lg:py-32 bg-gradient-soft relative">
+      {/* SERVICES SECTION - Animated gradient */}
+      <section id="services" className="py-20 lg:py-32 relative bg-white/60 backdrop-blur-sm">
         <div className="container-padding">
           <div className="mb-12 text-center">
             <motion.h2 
@@ -210,8 +208,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* USE CASES SECTION - With Spotlight and Typing */}
-      <section id="use-cases" className="py-20 bg-gradient-primary-soft">
+      {/* USE CASES SECTION */}
+      <section id="use-cases" className="py-20 bg-white/60 backdrop-blur-sm">
         <div className="container-padding">
           <div className="mb-12 text-center">
             <motion.h2 
@@ -314,8 +312,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BENEFITS / WHY US - With Spotlight */}
-      <section id="benefits" className="py-20 bg-mesh-gradient">
+      {/* BENEFITS / WHY US */}
+      <section id="benefits" className="py-20 bg-white/60 backdrop-blur-sm">
         <div className="container-padding">
           <div className="mb-12 text-center">
             <motion.h2 
@@ -390,8 +388,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TECH STACK SECTION - With Typing */}
-      <section id="tech-stack" className="py-20 bg-gradient-accent-soft">
+      {/* TECH STACK SECTION */}
+      <section id="tech-stack" className="py-20 bg-white/60 backdrop-blur-sm">
         <div className="container-padding text-center">
           <h2 className="text-3xl font-bold text-primary mb-4">
             Our{" "}
@@ -420,7 +418,7 @@ export default function Home() {
       </section>
 
       {/* CONTACT SECTION */}
-      <section id="contact" className="py-24 bg-gradient-soft relative">
+      <section id="contact" className="py-24 bg-white/60 backdrop-blur-sm relative">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-primary mb-4">

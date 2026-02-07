@@ -164,7 +164,10 @@ const CardNav = ({
 
   return (
     <div className={`card-nav-container ${className}`}>
-      <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
+      <nav
+        ref={navRef}
+        className={`card-nav ${isExpanded ? 'open' : ''}`}
+      >
         <div className="card-nav-top">
           <div
             className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
@@ -180,7 +183,9 @@ const CardNav = ({
           </div>
 
           <div className="logo-container">
-            <img src={logo} alt={logoAlt} className="logo" />
+            <a href="https://automataxpro.site" aria-label={logoAlt}>
+              <img src={logo} alt={logoAlt} className="logo" />
+            </a>
           </div>
 
           <button
@@ -204,8 +209,16 @@ const CardNav = ({
               <div className="nav-card-label">{item.label}</div>
               <div className="nav-card-links">
                 {item.links?.map((lnk, i) => (
-                  <a key={`${lnk.label}-${i}`} className="nav-card-link" href={lnk.href} aria-label={lnk.ariaLabel}>
-                    <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                  <a
+                    key={`${lnk.label}-${i}`}
+                    className="nav-card-link"
+                    href={lnk.href}
+                    aria-label={lnk.ariaLabel}
+                  >
+                    <GoArrowUpRight
+                      className="nav-card-link-icon"
+                      aria-hidden="true"
+                    />
                     {lnk.label}
                   </a>
                 ))}

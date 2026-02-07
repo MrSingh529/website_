@@ -200,9 +200,9 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid - With Spotlight */}
-      <section id="services-grid" className="py-20 lg:py-32 bg-muted/30">
+      <section id="services" className="py-20 lg:py-32">
         <div className="container-padding">
-          <div className="text-center mb-12">
+          <div className="rounded-3xl bg-white/70 backdrop-blur shadow-lg border border-white/60 text-center p-12 mb-16">
             <h2 className="text-3xl font-bold text-primary mb-4">
               Our{" "}
               <TextType
@@ -218,6 +218,7 @@ export default function ServicesPage() {
                 startOnVisible={true}
               />
             </h2>
+
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Comprehensive automation solutions tailored to your business needs
             </p>
