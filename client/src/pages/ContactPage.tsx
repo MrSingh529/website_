@@ -195,9 +195,13 @@ export default function ContactPage() {
               startOnVisible={true}
             />
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
             Connect with our automation experts to discuss your needs and explore how AutomataX
             can help you achieve your goals.
+          </p>
+
+          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+            No spam, no pushy sales – just a 30‑minute clarity call to see if automation is a real fit.
           </p>
         </div>
       </section>
@@ -376,6 +380,7 @@ export default function ContactPage() {
                           </>
                         )}
                       </Button>
+
                       <Button
                         size="lg"
                         variant="outline"
@@ -393,7 +398,24 @@ export default function ContactPage() {
                         )}
                       </Button>
                     </div>
-                  </CardContent>
+
+                    <div className="mt-6 border-t border-border/50 pt-4">
+                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-3">
+                        How we typically work
+                      </p>
+                      <div className="grid gap-3 md:grid-cols-3 text-left md:text-center">
+                        <div className="text-sm text-muted-foreground">
+                          <span className="font-semibold text-primary">1. Discovery</span> – 30-minute call to map your processes and goals.
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          <span className="font-semibold text-primary">2. Prototype</span> – quick proof-of-concept in days, not months.
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          <span className="font-semibold text-primary">3. Launch</span> – production-ready build, training, and ongoing support.
+                        </div>
+                      </div>
+                    </div>
+                    </CardContent>
                 </Card>
               </SpotlightCard>
             </motion.div>
