@@ -278,7 +278,7 @@ export default function UseCasesPage() {
       </section>
 
       {/* Benefits Section - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
@@ -311,7 +311,7 @@ export default function UseCasesPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
-                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                  <div className="text-center p-6 bg-card rounded-xl h-full flex flex-col items-center justify-center">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
                       <benefit.icon className="w-8 h-8" />
                     </div>
@@ -463,7 +463,7 @@ export default function UseCasesPage() {
       </section>
 
       {/* Statistics Section - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
@@ -501,7 +501,7 @@ export default function UseCasesPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.08)" className="h-full">
-                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                  <div className="text-center p-6 bg-card rounded-xl h-full flex flex-col items-center justify-center">
                     <div className="text-4xl font-bold text-accent mb-2">{stat.value}</div>
                     <div className="text-sm text-muted-foreground">{stat.label}</div>
                   </div>
