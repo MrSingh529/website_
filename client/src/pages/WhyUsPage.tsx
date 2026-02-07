@@ -190,7 +190,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* Our Story - Simplified - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="max-w-3xl mx-auto">
             <motion.div
@@ -327,7 +327,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* Trusted By Section - Logo Carousel */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
@@ -351,8 +351,8 @@ export default function WhyUsPage() {
           </div>
 
           <div className="relative overflow-hidden py-12">
-            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10"></div>
             
             <div className="flex animate-slide">
               {[...clientLogos, ...clientLogos, ...clientLogos].map((client, index) => (
@@ -434,7 +434,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* Our Values - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-primary mb-4">
@@ -467,7 +467,7 @@ export default function WhyUsPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
-                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                  <div className="text-center p-6 bg-card rounded-xl h-full flex flex-col items-center justify-center">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
                       <value.icon className="w-8 h-8" />
                     </div>
@@ -515,7 +515,7 @@ export default function WhyUsPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)" className="h-full">
-                  <div className="text-center p-6 bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                  <div className="text-center p-6 bg-card rounded-xl h-full flex flex-col items-center justify-center">
                     <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 mb-4">
                       <metric.icon className="h-10 w-10 text-primary" />
                     </div>
@@ -530,7 +530,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* Our Process - With Spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-muted/40">
         <div className="container-padding">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-primary mb-4">
@@ -587,7 +587,7 @@ export default function WhyUsPage() {
       <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container-padding">
           <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.12)">
-            <Card className="border-2 border-accent/20 bg-white">
+            <Card className="border-2 border-accent/20 bg-card">
               <CardContent className="p-12">
                 <div className="max-w-4xl mx-auto text-center">
                   <h2 className="text-3xl font-bold text-primary mb-6">
