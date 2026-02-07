@@ -5,62 +5,51 @@
 @tailwind utilities;
 
 :root {
-  --font-body: 'Inter', sans-serif;
-  --font-display: 'Inter', sans-serif;
-
-  /* Updated Color Palette - Premium Blue Theme */
-  /* Background: White */
   --background: 0 0% 100%;
-  /* Foreground: Your Black (#0B0B0B) */
-  --foreground: 0 0% 4%;  /* #0B0B0B = hsl(0, 0%, 4%) */
+  --foreground: 222 47% 11%;
 
-  /* Primary: Lighter Premium Blue */
-  --primary: 217 91% 60%;  /* Lighter, more premium blue - hsl(217, 91%, 60%) */
+  --primary: 226 100% 56%;
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Medium Blue */
-  --secondary: 217 86% 50%;  /* hsl(217, 86%, 50%) */
+  --secondary: 223 84% 31%;
   --secondary-foreground: 0 0% 100%;
 
-  /* Accent: Very Light Blue for highlights */
-  --accent: 217 100% 70%;  /* hsl(217, 100%, 70%) */
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 15% 40%;
+
+  --accent: 217 91% 60%;
   --accent-foreground: 0 0% 100%;
 
-  /* Muted: Soft blue/gray tones */
-  --muted: 217 20% 96%;
-  --muted-foreground: 217 15% 40%;
-
-  /* UI Elements */
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 4%;  /* Your Black */
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 4%;  /* Your Black */
-  --border: 217 20% 90%;
-  --input: 217 20% 96%;
-  --ring: 217 91% 60%;  /* Premium blue focus rings */
-  --radius: 0.5rem;
+  --card-foreground: 222 47% 11%;
 
-  /* Functional - keeping standard red */
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 100%;
+  --ring: 226 100% 56%;
 }
 
 .dark {
-  /* Dark mode with premium blue/black scheme */
-  --background: 0 0% 4%;  /* Your Black as dark mode background */
-  --foreground: 0 0% 100%;
-  --primary: 217 100% 70%;  /* Brighter premium blue in dark mode */
-  --primary-foreground: 0 0% 4%;  /* Your Black */
-  --secondary: 217 91% 60%;  /* Original premium blue */
-  --secondary-foreground: 0 0% 100%;
-  --accent: 217 100% 80%;  /* Even brighter for accents */
-  --accent-foreground: 0 0% 4%;  /* Your Black */
-  --muted: 217 30% 15%;
-  --muted-foreground: 217 20% 70%;
-  --card: 217 30% 10%;
-  --card-foreground: 0 0% 100%;
-  --border: 217 30% 20%;
-  --input: 217 30% 20%;
+  --background: 222 47% 5%;      /* near‑black navy */
+  --foreground: 210 40% 98%;
+
+  --primary: 226 100% 60%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 222 47% 15%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 222 47% 9%;
+  --muted-foreground: 215 20% 75%;
+
+  --accent: 217 91% 60%;
+  --accent-foreground: 0 0% 100%;
+
+  --border: 222 40% 18%;
+  --input: 222 40% 18%;
+  --card: 222 47% 7%;
+  --card-foreground: 210 40% 98%;
+
+  --ring: 226 100% 60%;
 }
 
 @layer base {
@@ -68,8 +57,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: var(--font-body);
+    @apply bg-background text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);

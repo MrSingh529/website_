@@ -3,7 +3,7 @@ import { AutomataXNav } from "./AutomataXNav";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col relative bg-zapier-bg">
+    <div className="min-h-screen flex flex-col relative bg-background">
       <AutomataXNav />
 
       <main className="flex-1 pt-28">

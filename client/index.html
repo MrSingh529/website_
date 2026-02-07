@@ -322,6 +322,20 @@
       gtag('config', 'G-WJCJJ1HH56');
     </script>
 
+    <script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const shouldUseDark = stored === 'dark' || (!stored && systemPrefersDark);
+
+        if (shouldUseDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+
   </head>
   <body>
     <noscript>

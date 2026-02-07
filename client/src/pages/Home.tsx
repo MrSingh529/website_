@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <Layout>
       {/* HERO SECTION */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-white">
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-background">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
         </div>
@@ -81,7 +81,11 @@ export default function Home() {
                 </Button>
               </a>
               <a href="/services">
-                <Button variant="outline" size="lg" className="bg-white/60 backdrop-blur border-primary/20 hover:bg-white text-lg px-8 py-6 rounded-xl">
+              <Button
+                variant="outline"
+                size="lg"
+                className="bg-card/60 backdrop-blur border-border/40 hover:bg-card text-lg px-8 py-6 rounded-xl"
+              >
                   Explore Services
                 </Button>
               </a>
@@ -125,7 +129,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES SECTION - Animated gradient */}
-      <section id="services" className="py-20 lg:py-32 relative bg-white/60 backdrop-blur-sm">
+      <section id="services" className="py-20 lg:py-32 relative bg-muted/40 backdrop-blur-sm">
         <div className="container-padding">
           <div className="mb-12 text-center">
             <motion.h2 
@@ -209,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* USE CASES SECTION */}
-      <section id="use-cases" className="py-20 bg-white/60 backdrop-blur-sm">
+      <section id="use-cases" className="py-20 bg-muted/40 backdrop-blur-sm">
         <div className="container-padding">
           <div className="mb-12 text-center">
             <motion.h2 
@@ -277,7 +281,7 @@ export default function Home() {
                 }
               ].map((item, idx) => (
                 <SpotlightCard key={idx} spotlightColor="rgba(59, 130, 246, 0.1)">
-                  <div className="group bg-white p-6 rounded-xl shadow-sm border border-border hover:border-accent/50 transition-all cursor-default">
+                  <div className="group bg-card p-6 rounded-xl shadow-sm border border-border hover:border-accent/50 transition-all cursor-default">
                     <h3 className="text-xl font-bold text-primary group-hover:text-accent transition-colors flex justify-between items-center">
                       {item.industry}
                       <ChevronRight className="opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
@@ -313,7 +317,7 @@ export default function Home() {
       </section>
 
       {/* BENEFITS / WHY US */}
-      <section id="benefits" className="py-20 bg-white/60 backdrop-blur-sm">
+      <section id="benefits" className="py-20 bg-muted/40 backdrop-blur-sm">
         <div className="container-padding">
           <div className="mb-12 text-center">
             <motion.h2 
@@ -355,7 +359,7 @@ export default function Home() {
             />
           </div>
           
-          <Card className="border-2 border-accent/20 bg-white/60 backdrop-blur-sm">
+          <Card className="border-2 border-accent/20 bg-card/60 backdrop-blur-sm">
             <CardContent className="p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {[
@@ -372,7 +376,7 @@ export default function Home() {
                     transition={{ delay: idx * 0.1 }}
                   >
                     <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.08)" className="h-full">
-                      <div className="text-center p-6 bg-white/50 rounded-xl h-full flex flex-col items-center justify-center">
+                      <div className="text-center p-6 bg-card/70 rounded-xl h-full flex flex-col items-center justify-center">
                         <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mb-4 mx-auto">
                           <item.icon className="w-8 h-8 text-primary" />
                         </div>
@@ -389,7 +393,7 @@ export default function Home() {
       </section>
 
       {/* TECH STACK SECTION */}
-      <section id="tech-stack" className="py-20 bg-white/60 backdrop-blur-sm">
+      <section id="tech-stack" className="py-20 bg-muted/40 backdrop-blur-sm">
         <div className="container-padding text-center">
           <h2 className="text-3xl font-bold text-primary mb-4">
             Our{" "}
@@ -418,7 +422,7 @@ export default function Home() {
       </section>
 
       {/* CONTACT SECTION */}
-      <section id="contact" className="py-24 bg-white/60 backdrop-blur-sm relative">
+      <section id="contact" className="py-20 bg-muted/40 backdrop-blur-sm">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-primary mb-4">
@@ -462,7 +466,7 @@ export default function Home() {
               </div>
 
               <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.1)">
-                <div className="bg-white p-8 rounded-2xl shadow-lg border border-border">
+                <div className="bg-card p-8 rounded-2xl shadow-lg border border-border">
                   <h3 className="text-xl font-bold text-primary mb-4">What happens next?</h3>
                   <ol className="space-y-4">
                     {[
