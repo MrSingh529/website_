@@ -462,7 +462,7 @@ export default function TechnologyStackPage() {
         </div>
       </section>
 
-      {/* CTA Section - With Typing */}
+      {/* CTA Section */}
       <section className="py-20">
         <div className="container-padding">
           <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.12)">

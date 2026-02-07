@@ -133,7 +133,7 @@ export default function ClientCaseStudiesPage() {
       </section>
 
       {/* Case Studies - With Spotlight */}
-      <section id="case-studies" className="py-20 lg:py-32 bg-white relative">
+      <section id="case-studies" className="py-20 lg:py-32 bg-muted/40 relative">
         <div className="container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
