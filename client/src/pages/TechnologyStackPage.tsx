@@ -5,15 +5,11 @@ import { MessageSquare, Users, Headphones } from 'lucide-react';
 import { CheckCircle2, Cpu, Cloud, Zap, Lock, GitBranch, Database, ArrowRight, Server, Shield, Code, BarChart, Link, Grid } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import SEO from "@/components/SEO";
 import SpotlightCard from '@/components/SpotlightCard';
 import TextType from '@/components/TextType';
 
-export default function TechnologyStackPage() {
-  useEffect(() => {
-    document.title = "Technology Stack | AutomataX";
-  }, []);
-  
+export default function TechnologyStackPage() {  
   const technologies = [
     {
       category: 'AI & Machine Learning',
@@ -177,6 +173,11 @@ export default function TechnologyStackPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Technology Stack | AI, Cloud & Automation Platforms"
+        description="Explore our technology stack: AI/ML, Low-Code platforms, Cloud Automation, and Enterprise Security. Built on modern, scalable infrastructure."
+        canonical="/technology"
+      />
       {/* Hero Section - With Typing Effect */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">

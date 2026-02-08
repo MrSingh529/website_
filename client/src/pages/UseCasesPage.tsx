@@ -5,15 +5,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowRight, Building2, Factory, ShoppingBag, Heart, Users, DollarSign, Truck, Headphones, LineChart, Shield, Zap, CheckCircle2 } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import SEO from "@/components/SEO";
 import SpotlightCard from '@/components/SpotlightCard';
 import TextType from '@/components/TextType';
 
 export default function UseCasesPage() {
-  useEffect(() => {
-    document.title = "Use Cases | AutomataX";
-  }, []);
-  
   const industries = [
     {
       name: 'Finance',
@@ -241,6 +237,11 @@ export default function UseCasesPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Use Cases | Industry-Specific Automation Solutions"
+        description="Explore automation use cases for Finance, Manufacturing, Retail, Healthcare & more. See proven solutions that reduce costs by 60% and improve efficiency by 70%."
+        canonical="/use-cases"
+      />
       {/* Hero Section - With Typing Effect */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">

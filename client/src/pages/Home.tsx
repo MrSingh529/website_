@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
 import { ServiceCard } from "@/components/ServiceCard";
 import { ContactForm } from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
+import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import SpotlightCard from "@/components/SpotlightCard";
 import TextType from "@/components/TextType";
@@ -21,10 +21,6 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
-  useEffect(() => {
-    document.title = "AutomataX | Your Future, Automated.";
-  }, []);
-  
   const clientLogos = [
     { name: 'Wembrace Biopharma', initials: 'WB', imagePath: '/client-logos/client-logo-1.png' },
     { name: 'imarc', initials: 'IM', imagePath: '/client-logos/client-logo-2.png' },
@@ -32,6 +28,12 @@ export default function Home() {
 
   return (
     <Layout>
+      <SEO 
+        title="AutomataX | AI-Driven Business Automation & RPA"
+        description="Automate your business workflows with AutomataX. We provide custom RPA, AI automation, and process engineering to reduce costs by 50%."
+        canonical="/"
+      />
+      
       {/* HERO SECTION */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-background">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">

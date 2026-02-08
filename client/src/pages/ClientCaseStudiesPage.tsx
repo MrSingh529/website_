@@ -4,16 +4,12 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Quote, TrendingUp, Clock, DollarSign } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { Link as ScrollLink } from 'react-scroll';
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import SpotlightCard from '@/components/SpotlightCard';
+import SEO from "@/components/SEO";
 import TextType from '@/components/TextType';
 
 export default function ClientCaseStudiesPage() {
-  useEffect(() => {
-    document.title = "Case Studies | AutomataX";
-  }, []);
-  
   const caseStudies = [
     {
       company: 'IMARC Group',
@@ -91,6 +87,12 @@ export default function ClientCaseStudiesPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Case Studies | Client Success Stories & Results"
+        description="Read real case studies: IMARC Group reduced report generation time by 95%, Apex Service Solutions cut billing cycles from 5 days to 1 hour. See measurable results."
+        canonical="/case-studies"
+      />
+      
       {/* Hero Section - With Typing Effect */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">

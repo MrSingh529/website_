@@ -5,15 +5,11 @@ import { CheckCircle2, ArrowRight, Workflow, Bot, Code2, Lightbulb, Database, Tr
 import { Layout } from '@/components/Layout';
 import { Link as ScrollLink } from 'react-scroll';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
 import SpotlightCard from '@/components/SpotlightCard';
+import SEO from "@/components/SEO";
 import TextType from '@/components/TextType';
 
 export default function ServicesPage() {
-  useEffect(() => {
-    document.title = "Our Services | AutomataX";
-  }, []);
-  
   const services = [
     {
       title: 'Business Process Automation',
@@ -110,6 +106,12 @@ export default function ServicesPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Our Services | Custom Automation & RPA Solutions"
+        description="Explore our services: Business Process Automation, RPA, Digital Transformation, and Custom Workflow Engineering. Built for scalability."
+        canonical="/services"
+      />
+      
       {/* Hero Section - With Typing Effect */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">

@@ -20,15 +20,11 @@ import {
 } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import SEO from "@/components/SEO";
 import SpotlightCard from '@/components/SpotlightCard';
 import TextType from '@/components/TextType';
 
 export default function WhyUsPage() {
-  useEffect(() => {
-    document.title = "Why Choose Us | AutomataX";
-  }, []);
-  
   const differentiators = [
     {
       icon: Heart,
@@ -152,6 +148,11 @@ export default function WhyUsPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Why Choose Us | Human-First Automation Company"
+        description="We're not another SaaS vendor. We're automation builders who give you full code ownership, direct communication, and real results in days—not months."
+        canonical="/why-us"
+      />
       {/* Hero Section - With Typing Effect */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">

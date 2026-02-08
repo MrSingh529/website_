@@ -14,16 +14,12 @@ import {
 } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { Link as ScrollLink } from 'react-scroll';
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import SpotlightCard from '@/components/SpotlightCard';
+import SEO from "@/components/SEO";
 import TextType from '@/components/TextType';
 
 export default function BenefitsROIPage() {
-  useEffect(() => {
-    document.title = "Benefits & ROI | AutomataX";
-  }, []);
-  
   const benefits = [
     {
       icon: TrendingUp,
@@ -117,6 +113,12 @@ export default function BenefitsROIPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Benefits & ROI | Business Automation Return on Investment"
+        description="Calculate your automation ROI. See how AutomataX delivers 40% cost reduction, 80% faster processes, and ROI in 6-12 months."
+        canonical="/benefits-roi"
+      />
+      
       {/* Hero Section - With Typing Effect */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">

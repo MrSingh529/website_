@@ -8,11 +8,13 @@ import Home from "@/pages/Home";
 import ServicesPage from "@/pages/ServicesPage";
 import UseCasesPage from "@/pages/UseCasesPage";
 import ClientCaseStudiesPage from "@/pages/ClientCaseStudiesPage";
+import { HelmetProvider } from 'react-helmet-async';
 import BenefitsROIPage from "@/pages/BenefitsROIPage";
 import TechnologyStackPage from "@/pages/TechnologyStackPage";
 import WhyUsPage from "@/pages/WhyUsPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/not-found";
+import SchemaMarkup from "@/components/SchemaMarkup";
 
 function Router() {
   return (
@@ -32,21 +34,24 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <ClickSpark
-          sparkColor='#0ea5e9'
-          sparkSize={12}
-          sparkRadius={20}
-          sparkCount={8}
-          duration={500}
-          easing='ease-out'
-        >
-          <Toaster />
-          <Router />
-        </ClickSpark>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <SchemaMarkup />
+          <ClickSpark
+            sparkColor='#0ea5e9'
+            sparkSize={12}
+            sparkRadius={20}
+            sparkCount={8}
+            duration={500}
+            easing='ease-out'
+          >
+            <Toaster />
+            <Router />
+          </ClickSpark>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 
