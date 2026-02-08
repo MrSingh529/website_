@@ -1,5 +1,6 @@
 import React from "react";
 import { AutomataXNav } from "./AutomataXNav";
+import { Shield } from 'lucide-react';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -23,6 +24,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
               Advanced automation and digital transformation solutions that future-proof your business.
             </p>
+            
+            <div className="pt-2 flex flex-col gap-1">
+              <p className="text-xs font-medium text-primary flex items-center gap-1.5">
+                <Shield className="w-3 h-3" /> Data & Security First
+              </p>
+              <p className="text-xs text-muted-foreground">
+                NDA-first engagement • Role-based access • Audit trails
+              </p>
+            </div>
           </div>
 
           {/* Quick Links */}

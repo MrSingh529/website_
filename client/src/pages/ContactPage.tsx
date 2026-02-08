@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { DataSecuritySection } from "@/components/DataSecuritySection";
 import {
   Select,
   SelectContent,
@@ -200,8 +201,9 @@ export default function ContactPage() {
             can help you achieve your goals.
           </p>
 
-          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-            No spam, no pushy sales – just a 30‑minute clarity call to see if automation is a real fit.
+          <p className="text-sm font-medium text-accent/80 max-w-xl mx-auto flex items-center justify-center gap-2">
+            <Shield className="w-4 h-4" />
+            No spam, no pushy sales – just a 30‑minute clarity call.
           </p>
         </div>
       </section>
@@ -399,23 +401,43 @@ export default function ContactPage() {
                       </Button>
                     </div>
 
-                    <div className="mt-6 border-t border-border/50 pt-4">
-                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-3">
-                        How we typically work
+                    <div className="mt-8 pt-6 border-t border-border/50">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+                        Our Process
                       </p>
-                      <div className="grid gap-3 md:grid-cols-3 text-left md:text-center">
-                        <div className="text-sm text-muted-foreground">
-                          <span className="font-semibold text-primary">1. Discovery</span> – 30-minute call to map your processes and goals.
+                      <div className="grid gap-4 sm:grid-cols-3">
+                        <div className="flex flex-col gap-1">
+                          <div className="flex items-center gap-2 text-sm font-medium text-primary">
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-xs">1</span>
+                            Discovery
+                          </div>
+                          <p className="text-xs text-muted-foreground pl-7">
+                            We map your current workflows & goals.
+                          </p>
                         </div>
-                        <div className="text-sm text-muted-foreground">
-                          <span className="font-semibold text-primary">2. Prototype</span> – quick proof-of-concept in days, not months.
+                        <div className="flex flex-col gap-1">
+                          <div className="flex items-center gap-2 text-sm font-medium text-primary">
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-xs">2</span>
+                            Prototype
+                          </div>
+                          <p className="text-xs text-muted-foreground pl-7">
+                            See a working proof-of-concept in days.
+                          </p>
                         </div>
-                        <div className="text-sm text-muted-foreground">
-                          <span className="font-semibold text-primary">3. Launch</span> – production-ready build, training, and ongoing support.
+                        <div className="flex flex-col gap-1">
+                          <div className="flex items-center gap-2 text-sm font-medium text-primary">
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-xs">3</span>
+                            Launch
+                          </div>
+                          <p className="text-xs text-muted-foreground pl-7">
+                            Deploy, train team, & optimize.
+                          </p>
                         </div>
                       </div>
                     </div>
-                    </CardContent>
+                    {/* END OF 3-STEP PROCESS */}
+
+                  </CardContent>
                 </Card>
               </SpotlightCard>
             </motion.div>
@@ -527,6 +549,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <DataSecuritySection />
     </Layout>
   );
 }
