@@ -64,7 +64,7 @@ export default function ServicesPage() {
         'We go beyond simple integrations. We architect complex, logic-heavy systems that handle decision-making, data transformation, and regulatory compliance.',
       benefits: [
         'Handle complex logic that Zapier/Make cannot',
-        'Full ownership of source code & IP',
+        'Transparent code ownership options',
         'No per-task limits or hidden subscription costs',
         'Scalable architecture for enterprise volumes',
       ],
@@ -268,7 +268,7 @@ export default function ServicesPage() {
                     </li>
                     <li className="flex items-start gap-3 text-foreground">
                       <CheckCircle2 className="h-5 w-5 text-accent mt-0.5" />
-                      One-time build cost, own the code forever
+                      One-time build cost with no hidden platform fees
                     </li>
                     <li className="flex items-start gap-3 text-foreground">
                       <CheckCircle2 className="h-5 w-5 text-accent mt-0.5" />
