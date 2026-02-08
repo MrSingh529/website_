@@ -66,12 +66,34 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <p>sales@automataxpro.site</p>
               <p>+91 92114 57736</p>
             </div>
-            <div className="pt-4">
+            
+            <div className="pt-4 flex flex-col gap-4">
               <a href="/contact">
-                <button className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-semibold transition-colors">
+                <button className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-semibold transition-colors w-full sm:w-auto">
                   Contact Us
                 </button>
               </a>
+              
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <a 
+                  href="https://www.linkedin.com/company/automataxpro/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors flex items-center gap-1.5"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                  Company LinkedIn
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/mrsingh/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors flex items-center gap-1.5"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                  Founder's LinkedIn
+                </a>
+              </div>
             </div>
           </div>
         </div>

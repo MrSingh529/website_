@@ -100,6 +100,35 @@ export default function Home() {
             </p>
           </motion.div>
           
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-12 flex justify-center"
+          >
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative flex items-center gap-4 bg-card/50 backdrop-blur-md border border-border/50 px-6 py-4 rounded-xl max-w-lg text-left">
+                <div className="flex-shrink-0 h-12 w-12 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold text-lg border border-accent/20">
+                  MS
+                </div>
+                <div>
+                  <p className="text-sm text-foreground/90 italic mb-1">
+                    "We don't just build bots; we build time. Time for your team to focus on what actually matters."
+                  </p>
+                  <div className="flex items-center gap-2 text-xs">
+                    <span className="font-semibold text-primary">Mr. Singh</span>
+                    <span className="text-muted-foreground">•</span>
+                    <span className="text-muted-foreground">Founder & CEO</span>
+                    <a href="/why-us" className="ml-auto text-accent hover:underline flex items-center gap-0.5">
+                      Read our story <ArrowRight className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Logo Carousel */}
           <div className="mt-20 border-t border-border/40 pt-10">
             <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-4">
