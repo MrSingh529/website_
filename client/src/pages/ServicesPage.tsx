@@ -58,18 +58,18 @@ export default function ServicesPage() {
       features: ['Process orchestration', 'System integration', 'Real-time tracking', 'Exception management'],
     },
     {
-      title: 'Custom Automation Software',
+      title: 'End-to-End Workflow Engineering',
       icon: Code2,
       description:
-        'Tailored automation solutions designed specifically for your unique business requirements, industry regulations, and operational constraints.',
+        'We go beyond simple integrations. We architect complex, logic-heavy systems that handle decision-making, data transformation, and regulatory compliance.',
       benefits: [
-        'Perfect fit for your specific needs',
-        'Competitive advantage through custom features',
-        'Full ownership and control',
-        'Scalable architecture for future growth',
+        'Handle complex logic that Zapier/Make cannot',
+        'Full ownership of source code & IP',
+        'No per-task limits or hidden subscription costs',
+        'Scalable architecture for enterprise volumes',
       ],
-      useCases: ['Industry-specific automation', 'Complex integrations', 'Specialized workflows', 'Custom dashboards'],
-      features: ['Custom development', 'API integration', 'UI/UX design', 'Maintenance & support'],
+      useCases: ['Proprietary algorithm implementation', 'Legacy system bridging', 'Complex regulatory reporting', 'Multi-stakeholder approval engines'],
+      features: ['Python/Node.js scripting', 'Custom API development', 'Secure data handling', 'Dedicated infrastructure'],
     },
     {
       title: 'Digital Transformation Consulting',
@@ -195,6 +195,89 @@ export default function ServicesPage() {
                 </SpotlightCard>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The "Beyond Zapier" Differentiator Section */}
+      <section className="py-20 bg-background border-y border-border/40 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent opacity-50"></div>
+        <div className="container-padding relative z-10">
+          <div className="text-center mb-16">
+            <Badge variant="outline" className="mb-4 border-primary/20 text-primary bg-primary/5">
+              Beyond Basic Integrations
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              More Than Just <span className="text-accent">"Connecting Apps"</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              While tools like Zapier are great for simple tasks, businesses hit a wall when complexity grows. 
+              That's where we step in.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* The Limit Card */}
+            <Card className="border-2 border-border/50 bg-muted/20">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
+                    <Workflow className="h-5 w-5 text-muted-foreground" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-muted-foreground">Standard Tools</h3>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3 text-muted-foreground/80">
+                    <span className="text-red-400 mt-1">✕</span>
+                    Limited to "If This Then That" logic
+                  </li>
+                  <li className="flex items-start gap-3 text-muted-foreground/80">
+                    <span className="text-red-400 mt-1">✕</span>
+                    Struggles with large datasets & formatting
+                  </li>
+                  <li className="flex items-start gap-3 text-muted-foreground/80">
+                    <span className="text-red-400 mt-1">✕</span>
+                    High monthly costs at scale
+                  </li>
+                  <li className="flex items-start gap-3 text-muted-foreground/80">
+                    <span className="text-red-400 mt-1">✕</span>
+                    You are responsible for maintenance
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* The Solution Card */}
+            <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.15)">
+              <Card className="border-2 border-accent/30 bg-card shadow-xl h-full">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
+                      <Code2 className="h-5 w-5 text-accent" />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary">AutomataX Architecture</h3>
+                  </div>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3 text-foreground">
+                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5" />
+                      Handle complex decision loops & AI analysis
+                    </li>
+                    <li className="flex items-start gap-3 text-foreground">
+                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5" />
+                      Process thousands of rows, PDFs, & images
+                    </li>
+                    <li className="flex items-start gap-3 text-foreground">
+                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5" />
+                      One-time build cost, own the code forever
+                    </li>
+                    <li className="flex items-start gap-3 text-foreground">
+                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5" />
+                      Fully managed execution & error handling
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </SpotlightCard>
           </div>
         </div>
       </section>
