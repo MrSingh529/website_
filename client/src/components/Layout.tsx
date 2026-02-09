@@ -53,6 +53,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <a href="/technology" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                 Technology
               </a>
+              <a href="/why-us" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Why Us
+              </a>
+              <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Contact
+              </a>
             </nav>
           </div>
 
@@ -82,16 +88,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   className="hover:text-primary transition-colors flex items-center gap-1.5"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-accent"></span>
-                  Company LinkedIn
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/mrsingh/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors flex items-center gap-1.5"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                  Founder's LinkedIn
+                  LinkedIn
                 </a>
               </div>
             </div>
