@@ -4,6 +4,7 @@ import { registerRoutes } from "./routes.ts";
 import { serveStatic } from "./static.ts";
 import { createServer } from "http";
 import cors from "cors";
+import axios from "axios";
 
 const app = express();
 const httpServer = createServer(app);
@@ -123,5 +124,31 @@ app.use((req, res, next) => {
     log(`serving on port ${port}`);
     console.log(`Server is running on port ${port}`);
     console.log(`Environment: ${isProduction ? 'production' : 'development'}`);
+    
+    setTimeout(() => {
+      const SELF_URL = process.env.RENDER_EXTERNAL_URL || 'https://website-q37s.onrender.com';
+      const PING_INTERVAL = 12 * 60 * 1000; // 12 minutes
+      
+      function pingSelf() {
+        const urlToPing = `${SELF_URL}/api`;
+        console.log(`[Keep-Alive] Pinging: ${urlToPing}`);
+        
+        axios.get(urlToPing)
+          .then(response => {
+            console.log(`[Keep-Alive] Ping successful. Status: ${response.status}`);
+          })
+          .catch(error => {
+            // Even if it fails (502/503), the server is now waking up
+            console.log(`[Keep-Alive] Ping triggered server wake-up. Message: ${error.message}`);
+          });
+      }
+      
+      // Start the interval
+      setInterval(pingSelf, PING_INTERVAL);
+      console.log(`[Keep-Alive] Timer set to ping every 12 minutes`);
+      
+      // Ping once immediately to ensure it's awake
+      pingSelf();
+    }, 5000); // Wait 5 seconds before starting
   });
 })();
