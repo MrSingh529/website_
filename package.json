@@ -51,6 +51,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-query": "^5.60.5",
     "@vitejs/plugin-react": "^4.7.0",
+    "axios": "^1.13.5",
     "autoprefixer": "^10.4.24",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
