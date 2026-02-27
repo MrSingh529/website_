@@ -5,8 +5,8 @@ export default function SchemaMarkup() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AutomataX",
-    "url": "https://automataxpro.site",
-    "logo": "https://automataxpro.site/logo.png",
+    "url": "https://automatax.site",
+    "logo": "https://automatax.site/logo.png",
     "founder": {
       "@type": "Person",
       "name": "Mr. Singh"
