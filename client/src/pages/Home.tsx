@@ -500,7 +500,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="text-accent font-semibold mb-1">Email</div>
-                    <p className="text-white/80">sales@automataxpro.site</p>
+                    <p className="text-white/80">sales@automatax.site</p>
                   </div>
                   <div>
                     <div className="text-accent font-semibold mb-1">Phone</div>
