@@ -8,7 +8,7 @@ interface SEOProps {
 }
 
 export default function SEO({ title, description, canonical, type = 'website' }: SEOProps) {
-  const siteUrl = 'https://automataxpro.site';
+  const siteUrl = 'https://automatax.site';
   const fullUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (
