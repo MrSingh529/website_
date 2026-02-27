@@ -10,7 +10,7 @@ Disallow: /*.json$
 # Allow Sitemap explicitly (Important!)
 Allow: /sitemap.xml
 
-Sitemap: https://automataxpro.site/sitemap.xml
+Sitemap: https://automatax.site/sitemap.xml
 
 # Block Aggressive Scrapers (Optional but good)
 User-agent: AhrefsBot
