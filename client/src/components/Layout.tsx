@@ -69,7 +69,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </h4>
             <div className="text-sm text-muted-foreground space-y-2">
               <p>New Delhi, India</p>
-              <p>sales@automataxpro.site</p>
+              <p>sales@automatax.site</p>
               <p>+91 92114 57736</p>
             </div>
             
