@@ -183,7 +183,7 @@ const CardNav = ({
           </div>
 
           <div className="logo-container">
-            <a href="https://automataxpro.site" aria-label={logoAlt}>
+            <a href="https://automatax.site" aria-label={logoAlt}>
               <img src={logo} alt={logoAlt} className="logo" />
             </a>
           </div>
