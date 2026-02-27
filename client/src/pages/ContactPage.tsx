@@ -459,10 +459,10 @@ export default function ContactPage() {
                       <div>
                         <div className="font-semibold text-foreground">Email</div>
                         <a
-                          href="mailto:sales@automataxpro.site"
+                          href="mailto:sales@automatax.site"
                           className="text-sm text-muted-foreground hover:text-accent transition-colors"
                         >
-                          sales@automataxpro.site
+                          sales@automatax.site
                         </a>
                       </div>
                     </div>
